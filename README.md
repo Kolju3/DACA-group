@@ -1,4 +1,4 @@
-# DACA-grup
+# DACA-group
 
 I created github repository.
-Its set as private but i sherd it with my group mates.
+Its set as private but i shared it with my group mates.
