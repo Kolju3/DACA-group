@@ -3,7 +3,7 @@ LIIKMED:
 1.	Helen Tanner (OS: Win) Roll nädal 1: Team Charter Koostaja
 2.	Natalia Krassilnikova (OS: Win) Roll nädal 1: Supabase Seadistaja
 3.	Olga Leisbblous (OS: Win) Roll nädal 1: NotebookLM Seadistaja 
-4.	Kalju Tamm (OS: Mac) Roll nädal 1: GitHub Repo Seadistaja
+4.	Kalju Tamm (OS: Linux) Roll nädal 1: GitHub Repo Seadistaja
 ÜHISED TÖÖRIISTAD:
 Suhtluskanal: Google Workspace Chat 
 Suhtluskanal osakonnale: Google Workspace Chat Urban-Style DACA – operatsioonid : https://chat.google.com/room/AAQAnNsGNdA?cls=7
