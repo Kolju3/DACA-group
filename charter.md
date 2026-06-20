@@ -1,7 +1,7 @@
 TEAM CHARTER — UrbanStyle Operatsioonid 
 LIIKMED:
 1.	Helen Tanner (OS: Win) Roll nädal 1: Team Charter Koostaja
-2.	Natalia Krassilnikova (OS: Win) Roll nädal 1: Supabase Seadistaja
+2.	Natalia Krassilnikova (OS: Mac) Roll nädal 1: Supabase Seadistaja
 3.	Olga Leisbblous (OS: Win) Roll nädal 1: NotebookLM Seadistaja 
 4.	Kalju Tamm (OS: Linux) Roll nädal 1: GitHub Repo Seadistaja
 ÜHISED TÖÖRIISTAD:
