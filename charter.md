@@ -26,10 +26,10 @@ Kasutame GitHubi projektifailide jaoks ning
 Google Drive'i dokumentide ja õppematerjalide jagamiseks.
 
 ## ROLLIDE ROTATSIOON:
-1. Nädal: A=Natalia B=Olga C=Kalju D=Helen
-2. Nädal: A=Helen B=Natalia C=Olga D=Kalju
-3. Nädal: A=Kalju B=Helen C=Natalia D=Olga
-4. Nädal: A=Olga B=Kalju C=Helen D=Natalia
+1. Nädal: A=Helen B=Kalju C=Natalia D=Olga
+2. Nädal: A=Olga B=Helen C=Kalju D=Natalia
+3. Nädal: A=Natalia B=Olga C=Helen D=Kalju
+4. Nädal: A=Kalju B=Natalia C=Olga D=Helen
 
 ## ALLKIRJAD:
 LEPITUD KOKKU SUULISELT 17.06.2026 Grupitöö koosolekul 
