@@ -1,10 +1,6 @@
-# Nädal 0 – kalju individuaalne töö
+# DACA-group
 
-## Ülesanne
-_Täienda ise_
+I created github repository.
+Its set as private but i shared it with my group mates.
 
-## Mida tegin
-- _Lisa siia_
-
-## SQL päringud / failid
-_Lisa lingid_
+I switched it to public later
