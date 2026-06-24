@@ -21,8 +21,10 @@ Hinnavahemik:
 📸 Tõendusmaterjal
 Analüüsi käigus tehtud ekraanitõmmised ja kontrollpäringud:
 
-Eesmärk	Fail
-Üldine toodete arv	Toodete arv.png
+Eesmärk -	Fail
+
+Üldine toodete arv-	Toodete arv.png
+
 Tabeli struktuuri uurimine -	Veerud.png,
 
 Unikaalsed kategooriad -	kategooriad.png,
