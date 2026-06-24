@@ -17,11 +17,17 @@ Kalleim toode: "õhuline sünteetiline sporditossud" (434€).
 Andmekvaliteet: Andmed on korrektsed – puuduvaid hinnad ja kategooriaid ei esine.
 
 Päringu eesmärk	             Tõendusmaterjal	
+
 Üldine toodete arv	             Toodete arv.png	
+
 Tabeli struktuuri uurimine	      Veerud.png	
-Unikaalsed kategooriad	      kategooriad.png	
+
+Unikaalsed kategooriad	      kategooriad.png
+
 Kallim ja soodsaim toode	      Kallim toode.png, Soodsaim toode.png	
+
 Laste riiete alamkategooriad      Lasteriiete alamkategooriad.png	
+
 Andmekvaliteedi kontroll	      puuduvad kategooriad:hinnad.png	
 
 💡 Lisaülesanded (30%)
