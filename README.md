@@ -97,7 +97,7 @@ DACA-group/
 
 ## 💡 Meeskonna peamised leiud
 
-_Täiendatakse iga nädal_
+Iganädalased leiud ja kokkuvõtted lisatakse iga nädala oma kausta alla (week-X/group/README)
 
 ---
 
