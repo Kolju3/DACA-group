@@ -17,7 +17,8 @@ Kalleim toode: "õhuline sünteetiline sporditossud" (434€).
 
 Andmekvaliteet: Andmed on korrektsed – puuduvad hinnad ja kategooriad puuduvad.
 
-🛠 SQL Päringud ja TõendusmaterjalKõik kasutatud SQL-päringud on leitavad failist: week_1_grupitoo_tootekaart_c.sqlPäringu eesmärkTulemuse pilt (Screenshot)Üldine toodete arvToodete arv.pngTabeli veergude struktuurVeerud.pngUnikaalsed kategooriadkategooriad.pngKallim / Soodsaim toodeKallim toode.png, Soodsaim toode.pngLaste riiete alamkategooriadLasteriiete alamkategooriad.pngAndmete kvaliteedi kontrollpuuduvad kategooriad:hinnad.png
+🛠 SQL Päringud ja Tõendusmaterjalid:
+Päringu eesmärkTulemuse pilt (Screenshot)Üldine toodete arvToodete arv.pngTabeli veergude struktuurVeerud.pngUnikaalsed kategooriadkategooriad.pngKallim / Soodsaim toodeKallim toode.png, Soodsaim toode.pngLaste riiete alamkategooriadLasteriiete alamkategooriad.pngAndmete kvaliteedi kontrollpuuduvad kategooriad:hinnad.png
 
 💡 Lisaülesanded (30%)
 Jõudsin süvendatud analüüsini, kus grupeerisin tooted kategooriate kaupa ning arvutasin välja hinnastatistika.
