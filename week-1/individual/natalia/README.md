@@ -1,4 +1,5 @@
 🚀 Nädal 1: ALAÜLESANDE KAART C - Tooteandmed (UrbanStyle)
+
 Koostaja: Natalia Krassilnikova
 
 📊 Analüüsi kokkuvõte
