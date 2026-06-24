@@ -1,10 +1,11 @@
-# Nädal 1 – natalia individuaalne töö 
+# Nädal 1 – ALAÜLESANDE KAART C: Tooteandmed - UrbanStyle
+Koostaja: Natalia Krassilnikova
 
 ## Ülesanne
 Eesmärk on uurida Tooteandmed tabelit ja analüüsida sealt leitavaid andmeid. 
 
 ## Mida tegin
-Uurisin toodete kategooriad, alamkategooriaid. Vaatasin lähemalt lasteriiete kategooriat. Leidsin kõige kallima ja soodsama hinna kõikide toodete seast. Oma päringud sallvestasin SQL failina ja screenshotid tulemustest on leitavad siin
+Uurisin toodete kategooriad, alamkategooriaid. Vaatasin lähemalt lasteriiete kategooriat. Leidsin kõige kallima ja soodsama hinna kõikide toodete seast. Oma päringud sallvestasin SQL failina ja screenshotid tulemustest on leitavad siin https://github.com/Kolju3/DACA-group/tree/main/week-1/individual/natalia.
 
 ## SQL päringud / failid
 ANALÜÜSI KOKKUVÕTE:
