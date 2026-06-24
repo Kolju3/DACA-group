@@ -13,7 +13,7 @@
 |------|----|--------------|--------|
 | Kalju Tamm | Linux | Roll A – GitHub Repo Seadistaja | [@Kolju3](https://github.com/Kolju3) |
 | Natalia Krassilnikova | Mac | Roll B – Supabase Seadistaja | [@Nata376](https://github.com/Nata376) |
-| Olga Leisbblous | Windows | Roll C – NotebookLM Seadistaja | _lisatakse hiljem_ |
+| Olga Leisbblous | Windows | Roll C – NotebookLM Seadistaja |[@oleisbblous](https://github.com/oleisbblous)|
 | Helen Tanner | Windows | Roll D – Team Charter Koostaja | [@HelenTanner3](https://github.com/HelenTanner3) |
 
 ---
@@ -81,17 +81,17 @@ DACA-group/
 
 | Nädal | Teema | Ühine töö | Staatus |
 |-------|-------|-----------|---------|
-| Nädal 0 | Töökeskkonna seadistamine | [group →](./week-0/group/) | ✅ Valmis |
-| Nädal 1 | SQL põhitõed – sales tabeli uurimine | [group →](./week-1/group/) | ⏳ |
-| Nädal 2 | Andmete puhastamine | [group →](./week-2/group/) | ⏳ |
-| Nädal 3 | SQL JOIN-id | [group →](./week-3/group/) | ⏳ |
-| Nädal 4 | GROUP BY ja agregatsioonid | [group →](./week-4/group/) | ⏳ |
-| Nädal 5 | Klientide segmenteerimine | [group →](./week-5/group/) | ⏳ |
-| Nädal 6 | Visualiseerimine | [group →](./week-6/group/) | ⏳ |
-| Nädal 7 | Varud ja operatsioonid | [group →](./week-7/group/) | ⏳ |
-| Nädal 8 | Python ja pandas | [group →](./week-8/group/) | ⏳ |
-| Nädal 9 | Dashboardid | [group →](./week-9/group/) | ⏳ |
-| Nädal 10 | Lõpuprojekt | [group →](./week-10/group/) | ⏳ |
+| Nädal 0 | Töökeskkonna seadistamine | [group →](./week-0/group/) | :white_check_mark: Valmis |
+| Nädal 1 | SQL põhitõed – sales tabeli uurimine | [group →](./week-1/group/) | :arrows_counterclockwise: Töös |
+| Nädal 2 | Andmete puhastamine | [group →](./week-2/group/) | :hourglass: Tulevikus |
+| Nädal 3 | SQL JOIN-id | [group →](./week-3/group/) |  :hourglass: Tulevikus |
+| Nädal 4 | GROUP BY ja agregatsioonid | [group →](./week-4/group/) |  :hourglass: Tulevikus |
+| Nädal 5 | Klientide segmenteerimine | [group →](./week-5/group/) |  :hourglass: Tulevikus |
+| Nädal 6 | Visualiseerimine | [group →](./week-6/group/) |  :hourglass: Tulevikus |
+| Nädal 7 | Varud ja operatsioonid | [group →](./week-7/group/) |  :hourglass: Tulevikus |
+| Nädal 8 | Python ja pandas | [group →](./week-8/group/) |  :hourglass: Tulevikus |
+| Nädal 9 | Dashboardid | [group →](./week-9/group/) |  :hourglass: Tulevikus |
+| Nädal 10 | Lõpuprojekt | [group →](./week-10/group/) |  :hourglass: Tulevikus |
 
 ---
 
