@@ -1,9 +1,6 @@
 🚀 Nädal 1: ALAÜLESANDE KAART C - Tooteandmed (UrbanStyle)
 Koostaja: Natalia Krassilnikova
 
-📝 Ülevaade
-Selles ülesandes viisin läbi UrbanStyle andmebaasi analüüsi, et mõista toodete struktuuri, kategooriate jaotust ning hinnastatistikat.
-
 📊 Analüüsi kokkuvõte
 Andmebaas sisaldab kokku 362 toodet, mis jagunevad 5 põhikategooriasse: jalanõud, laste riided, aksessuaarid, naiste riided ja meeste riided.
 
@@ -15,36 +12,50 @@ Soodsaim toode: "Vintage villane kangasvöö" (13.53€).
 
 Kalleim toode: "õhuline sünteetiline sporditossud" (434€).
 
-Andmekvaliteet: Andmed on korrektsed – puuduvad hinnad ja kategooriad puuduvad.
+Andmekvaliteet: Andmed on korrektsed – puuduvaid hinnad ja kategooriaid ei esine.
 
-🛠 SQL Päringud ja Tõendusmaterjalid:
-Päringu eesmärkTulemuse pilt (Screenshot)Üldine toodete arvToodete arv.pngTabeli veergude struktuurVeerud.pngUnikaalsed kategooriadkategooriad.pngKallim / Soodsaim toodeKallim toode.png, Soodsaim toode.pngLaste riiete alamkategooriadLasteriiete alamkategooriad.pngAndmete kvaliteedi kontrollpuuduvad kategooriad:hinnad.png
+Päringu eesmärk	             Tõendusmaterjal	
+Üldine toodete arv	             Toodete arv.png	
+Tabeli struktuuri uurimine	      Veerud.png	
+Unikaalsed kategooriad	      kategooriad.png	
+Kallim ja soodsaim toode	      Kallim toode.png, Soodsaim toode.png	
+Laste riiete alamkategooriad      Lasteriiete alamkategooriad.png	
+Andmekvaliteedi kontroll	      puuduvad kategooriad:hinnad.png	
 
 💡 Lisaülesanded (30%)
-Jõudsin süvendatud analüüsini, kus grupeerisin tooted kategooriate kaupa ning arvutasin välja hinnastatistika.
+Siin on süvendatud analüüs, kus grupeerisin tooted kategooriate kaupa ning arvutasin hinnastatistika.
 
-1. Toodete arv ja keskmised hinnad kategooriates
-Selle päringuga sain ülevaate iga kategooria mahtudest ja hinnavahemikest:
+1. Tooteid kategooriate kaupa
+Tulemus: "Tooted kategooriate järgi kokku"
+
+SQL
+SELECT category, COUNT(*) AS toodete_arv
+FROM products    
+GROUP BY category
+ORDER BY toodete_arv DESC;
+
+2. Põhjalik hinnastatistika
+Tulemus: "Keskimne hind kategooriates"
 
 SQL
 SELECT category, 
        COUNT(*) AS toodete_arv, 
        MIN(retail_price) AS min_hind, 
        MAX(retail_price) AS max_hind,
-       ROUND(AVG(retail_price), 2) AS keskmine_hind
+       AVG(retail_price) AS keskmine_hind
 FROM products
 GROUP BY category
 ORDER BY max_hind DESC;
-Tulemus: Keskmine hind kategooriates.png
 
-2. Premium tooted laste riiete kategoorias (>50€)
-Analüüsisin lasteriiete segmendi kallimaid tooteid:
+3. Premium-tooted (laste_riided > 50€)
+Tulemus: "Lasteriided üle 50€"
 
 SQL
 SELECT * FROM products 
-WHERE retail_price > 50 
+WHERE retail_price > 50  
   AND category = 'laste_riided' 
 ORDER BY retail_price DESC;
-Tulemus: Lasteriided üle 50€.png
 
-Projekti SQL-baasi haldamine: https://supabase.com/dashboard/project/xwmwqxqorsiauliaynkk/sql/10b85090-f04c-4d82-b2d6-2a51fb279489
+Kõik päringud on salvestatud faili: week_1_grupitoo_tootekaart_c.sql
+
+Päringud tehtud: https://supabase.com/dashboard/project/xwmwqxqorsiauliaynkk/sql/10b85090-f04c-4d82-b2d6-2a51fb279489
