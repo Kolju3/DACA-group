@@ -47,12 +47,19 @@ Tulemus: "Keskimne hind kategooriates"
 
 SQL
 SELECT category, 
+
        COUNT(*) AS toodete_arv, 
+       
        MIN(retail_price) AS min_hind, 
+       
        MAX(retail_price) AS max_hind,
+       
        AVG(retail_price) AS keskmine_hind
+       
 FROM products
+
 GROUP BY category
+
 ORDER BY max_hind DESC;
 
 3. Premium-tooted (laste_riided > 50€)
