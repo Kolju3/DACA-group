@@ -1,7 +1,9 @@
 🚀 Nädal 1: ALAÜLESANDE KAART C - Tooteandmed (UrbanStyle)
+
 Koostaja: Natalia Krassilnikova
 
 📊 Analüüsi kokkuvõte
+
 Andmebaas sisaldab kokku 362 toodet, mis jagunevad 5 põhikategooriasse: jalanõud, laste riided, aksessuaarid, naiste riided ja meeste riided.
 
 Laste riiete kategooria: Sisaldab 5 alamkategooriat (jakid, kleidid, püksid, komplektid ja trikotaaž).
