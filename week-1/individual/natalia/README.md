@@ -26,16 +26,16 @@ Kõikidel toodetel on määratud hind ja kategooria (puuduvaid väärtusi ei esi
 
 https://supabase.com/dashboard/project/xwmwqxqorsiauliaynkk/sql/10b85090-f04c-4d82-b2d6-2a51fb279489
 
--- 1. Üldine toodete arv
+-- 1. Üldine toodete arv (LISA "Toodete arv.png")
 SELECT COUNT(*) AS toodete_arv FROM products;
 
--- 2. Veergude struktuuri kontroll
+-- 2. Veergude struktuuri kontroll (Lisa:"Veerud.png")
 SELECT * FROM products LIMIT 10;
 
--- 3. Unikaalsed kategooriad
+-- 3. Unikaalsed kategooriad (Lisa:"kategooriad.png")
 SELECT DISTINCT category FROM products;
 
--- 4. Kõige kallimad ja soodsamad tooted
+-- 4. Kõige kallimad ja soodsamad tooted (Lisa:"Kallim toode.png"; "Soodsaim toode.png")
 SELECT product_name, category, retail_price 
 FROM products 
 ORDER BY retail_price DESC 
@@ -46,17 +46,20 @@ FROM products
 ORDER BY retail_price ASC 
 LIMIT 10;
 
--- 5. 'laste_riided' analüüs
+-- 5. 'laste_riided' analüüs 
 SELECT * FROM products 
 WHERE category = 'laste_riided' 
 ORDER BY retail_price DESC;
 
--- 'laste_riided' alamkategooriad
+-- 'laste_riided' alamkategooriad (Lisa:"Lasteriiete alamkategooriad.png")
 SELECT DISTINCT subcategory
 FROM products
 WHERE category = 'laste_riided'
 ORDER BY subcategory;
 
--- 6. Andmete kvaliteedi kontroll (puuduvate väärtuste leidmine)
+-- 6. Andmete kvaliteedi kontroll (puuduvate väärtuste leidmine) (Lisa:"puuduvad kategooriad:hinnad.png")
 SELECT COUNT(*) - COUNT(retail_price) AS puuduvad_hinnad FROM products;
 SELECT COUNT(*) - COUNT(category) AS puuduvad_kategooriad FROM products;
+
+
+SQL fail: week_1_grupitoo_tootekaart_c.sql.
