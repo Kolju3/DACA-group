@@ -23,11 +23,15 @@ Analüüsi käigus tehtud ekraanitõmmised ja kontrollpäringud:
 
 Eesmärk	Fail
 Üldine toodete arv	Toodete arv.png
-Tabeli struktuuri uurimine	Veerud.png
-Unikaalsed kategooriad	kategooriad.png
-Hinnastatistika (min/max)	Kallim toode.png, Soodsaim toode.png
-Lasteriiete alamkategooriad	Lasteriiete alamkategooriad.png
-Andmekvaliteedi kontroll	puuduvad kategooriad:hinnad.png
+Tabeli struktuuri uurimine -	Veerud.png,
+
+Unikaalsed kategooriad -	kategooriad.png,
+
+Hinnastatistika (min/max) - 	Kallim toode.png, Soodsaim toode.png,
+
+Lasteriiete alamkategooriad -	Lasteriiete alamkategooriad.png,
+
+Andmekvaliteedi kontroll- puuduvad kategooriad:hinnad.png,
 
 
 💡 Süvendatud analüüs (Lisaülesanded)
