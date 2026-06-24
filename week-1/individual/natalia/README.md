@@ -1,72 +1,49 @@
-# Nädal 1 – ALAÜLESANDE KAART C: Tooteandmed - UrbanStyle
+🚀 Nädal 1: ALAÜLESANDE KAART C - Tooteandmed (UrbanStyle)
 Koostaja: Natalia Krassilnikova
 
-## Ülesanne
-Eesmärk on uurida Tooteandmed tabelit ja analüüsida sealt leitavaid andmeid. 
+📝 Ülevaade
+Selles ülesandes viisin läbi UrbanStyle andmebaasi analüüsi, et mõista toodete struktuuri, kategooriate jaotust ning hinnastatistikat.
 
-## Mida tegin
-Uurisin toodete kategooriad, alamkategooriaid. Vaatasin lähemalt lasteriiete kategooriat. Leidsin kõige kallima ja soodsama hinna kõikide toodete seast. Oma päringud sallvestasin SQL failina ja screenshotid tulemustest on leitavad siin https://github.com/Kolju3/DACA-group/tree/main/week-1/individual/natalia.
+📊 Analüüsi kokkuvõte
+Andmebaas sisaldab kokku 362 toodet, mis jagunevad 5 põhikategooriasse: jalanõud, laste riided, aksessuaarid, naiste riided ja meeste riided.
 
-## SQL päringud / failid
-ANALÜÜSI KOKKUVÕTE:
-Andmebaas sisaldab kokku 362 toodet, mis jagunevad 5 põhikategooriasse: 
-jalanõud, laste riided, aksessuaarid, naiste riided ja meeste riided. 
-
-Kategooriad jagunevad alamkategooriateks. Näiteks 'laste_riided' 
-kategoorias on 5 alamkategooriat: jakid, kleidid, püksid, komplektid ja trikotaaž.
+Laste riiete kategooria: Sisaldab 5 alamkategooriat (jakid, kleidid, püksid, komplektid ja trikotaaž).
 
 Hinnastatistika:
-- Kõige soodsam toode on "Vintage villane kangasvöö" (aksessuaaride kat.), hinnaga 13.53€.
-- Kõige kallim toode on "õhuline sünteetiline sporditossud" (jalanõude kat.), hinnaga 434€.
 
-Andmete kvaliteet:
-Kõikidel toodetel on määratud hind ja kategooria (puuduvaid väärtusi ei esine).
-============================================================
-*/
+Soodsaim toode: "Vintage villane kangasvöö" (13.53€).
 
-https://supabase.com/dashboard/project/xwmwqxqorsiauliaynkk/sql/10b85090-f04c-4d82-b2d6-2a51fb279489
+Kalleim toode: "õhuline sünteetiline sporditossud" (434€).
 
--- 1. Üldine toodete arv LISA ("Toodete arv.png")
+Andmekvaliteet: Andmed on korrektsed – puuduvad hinnad ja kategooriad puuduvad.
 
-SELECT COUNT(*) AS toodete_arv FROM products;
+🛠 SQL Päringud ja TõendusmaterjalKõik kasutatud SQL-päringud on leitavad failist: week_1_grupitoo_tootekaart_c.sqlPäringu eesmärkTulemuse pilt (Screenshot)Üldine toodete arvToodete arv.pngTabeli veergude struktuurVeerud.pngUnikaalsed kategooriadkategooriad.pngKallim / Soodsaim toodeKallim toode.png, Soodsaim toode.pngLaste riiete alamkategooriadLasteriiete alamkategooriad.pngAndmete kvaliteedi kontrollpuuduvad kategooriad:hinnad.png
 
--- 2. Veergude struktuuri kontroll (Lisa:"Veerud.png")
+💡 Lisaülesanded (30%)
+Jõudsin süvendatud analüüsini, kus grupeerisin tooted kategooriate kaupa ning arvutasin välja hinnastatistika.
 
-SELECT * FROM products LIMIT 10;
+1. Toodete arv ja keskmised hinnad kategooriates
+Selle päringuga sain ülevaate iga kategooria mahtudest ja hinnavahemikest:
 
--- 3. Unikaalsed kategooriad (Lisa:"kategooriad.png")
-
-SELECT DISTINCT category FROM products;
-
--- 4. Kõige kallimad ja soodsamad tooted (Lisa:"Kallim toode.png"; "Soodsaim toode.png")
-
-SELECT product_name, category, retail_price 
-FROM products 
-ORDER BY retail_price DESC 
-LIMIT 10;
-
-SELECT product_name, category, retail_price 
-FROM products 
-ORDER BY retail_price ASC 
-LIMIT 10;
-
--- 5. 'laste_riided' analüüs 
-
-SELECT * FROM products 
-WHERE category = 'laste_riided' 
-ORDER BY retail_price DESC;
-
--- 'laste_riided' alamkategooriad (Lisa:"Lasteriiete alamkategooriad.png")
-
-SELECT DISTINCT subcategory
+SQL
+SELECT category, 
+       COUNT(*) AS toodete_arv, 
+       MIN(retail_price) AS min_hind, 
+       MAX(retail_price) AS max_hind,
+       ROUND(AVG(retail_price), 2) AS keskmine_hind
 FROM products
-WHERE category = 'laste_riided'
-ORDER BY subcategory;
+GROUP BY category
+ORDER BY max_hind DESC;
+Tulemus: Keskmine hind kategooriates.png
 
--- 6. Andmete kvaliteedi kontroll (puuduvate väärtuste leidmine) (Lisa:"puuduvad kategooriad:hinnad.png")
+2. Premium tooted laste riiete kategoorias (>50€)
+Analüüsisin lasteriiete segmendi kallimaid tooteid:
 
-SELECT COUNT(*) - COUNT(retail_price) AS puuduvad_hinnad FROM products;
-SELECT COUNT(*) - COUNT(category) AS puuduvad_kategooriad FROM products;
+SQL
+SELECT * FROM products 
+WHERE retail_price > 50 
+  AND category = 'laste_riided' 
+ORDER BY retail_price DESC;
+Tulemus: Lasteriided üle 50€.png
 
-
-SQL fail: week_1_grupitoo_tootekaart_c.sql.
+Projekti SQL-baasi haldamine: https://supabase.com/dashboard/project/xwmwqxqorsiauliaynkk/sql/10b85090-f04c-4d82-b2d6-2a51fb279489
