@@ -61,6 +61,5 @@ ORDER BY retail_price DESC;
 📁 Failid ja lingid
 SQL päringute fail: week_1_grupitoo_tootekaart_c.sql
 
-Supabase Dashboard: Vaata päringuid siit
+Supabase Dashboard: Vaata päringuid siit: https://supabase.com/dashboard/project/xwmwqxqorsiauliaynkk/sql/10b85090-f04c-4d82-b2d6-2a51fb279489
 
-L
