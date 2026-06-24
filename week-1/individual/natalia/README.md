@@ -1,10 +1,59 @@
-# Nädal 1 – natalia individuaalne töö
+# Nädal 1 – natalia individuaalne töö 
 
 ## Ülesanne
-_Täienda ise_
+Eesmärk on uurida Tooteandmed tabelit ja analüüsida sealt leitavaid andmeid. 
 
 ## Mida tegin
-- _Lisa siia_
+Uurisin toodete kategooriad, alamkategooriaid. Vaatasin lähemalt lasteriiete kategooriat. Leidsin kõige kallima ja soodsama hinna kõikide toodete seast. Oma päringud sallvestasin SQL failina ja screenshotid tulemustest on leitavad siin
 
 ## SQL päringud / failid
-_Lisa lingid_
+ANALÜÜSI KOKKUVÕTE:
+Andmebaas sisaldab kokku 362 toodet, mis jagunevad 5 põhikategooriasse: 
+jalanõud, laste riided, aksessuaarid, naiste riided ja meeste riided. 
+
+Kategooriad jagunevad alamkategooriateks. Näiteks 'laste_riided' 
+kategoorias on 5 alamkategooriat: jakid, kleidid, püksid, komplektid ja trikotaaž.
+
+Hinnastatistika:
+- Kõige soodsam toode on "Vintage villane kangasvöö" (aksessuaaride kat.), hinnaga 13.53€.
+- Kõige kallim toode on "õhuline sünteetiline sporditossud" (jalanõude kat.), hinnaga 434€.
+
+Andmete kvaliteet:
+Kõikidel toodetel on määratud hind ja kategooria (puuduvaid väärtusi ei esine).
+============================================================
+*/
+
+-- 1. Üldine toodete arv
+SELECT COUNT(*) AS toodete_arv FROM products;
+
+-- 2. Veergude struktuuri kontroll
+SELECT * FROM products LIMIT 10;
+
+-- 3. Unikaalsed kategooriad
+SELECT DISTINCT category FROM products;
+
+-- 4. Kõige kallimad ja soodsamad tooted
+SELECT product_name, category, retail_price 
+FROM products 
+ORDER BY retail_price DESC 
+LIMIT 10;
+
+SELECT product_name, category, retail_price 
+FROM products 
+ORDER BY retail_price ASC 
+LIMIT 10;
+
+-- 5. 'laste_riided' analüüs
+SELECT * FROM products 
+WHERE category = 'laste_riided' 
+ORDER BY retail_price DESC;
+
+-- 'laste_riided' alamkategooriad
+SELECT DISTINCT subcategory
+FROM products
+WHERE category = 'laste_riided'
+ORDER BY subcategory;
+
+-- 6. Andmete kvaliteedi kontroll (puuduvate väärtuste leidmine)
+SELECT COUNT(*) - COUNT(retail_price) AS puuduvad_hinnad FROM products;
+SELECT COUNT(*) - COUNT(category) AS puuduvad_kategooriad FROM products;
