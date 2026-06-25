@@ -63,12 +63,8 @@ FROM sales
 ORDER BY total_price DESC
 LIMIT 10;
 
--- Tulemus:
--- Suurimad tehingud jäävad vahemikku
--- 1 858,95 kuni 2 170,40 EUR.
-
--- Järeldus:
--- Esialgsel vaatlusel ei paista suurimate tehingute seas ebarealistlikke väärtusi.
+-- Tulemus: Suurimad tehingud jäävad vahemikku  1 858,95 kuni 2 170,40 EUR.
+-- Järeldus: Esialgsel vaatlusel ei paista suurimate tehingute seas ebarealistlikke väärtusi.
 
 -- ============================================================
 -- 4. SUURIMAD TEHINGUD — TALLINNA KAUPLUS
@@ -86,11 +82,8 @@ WHERE store_location = 'Tallinn'
 ORDER BY total_price DESC
 LIMIT 10;
 
--- Tulemus:
--- Suurimad tehingud jäävad vahemikku 1 858,95 kuni 2 170,40 EUR.
-
--- Järeldus:
--- Esialgsel vaatlusel ei paista suurimate tehingute seas ebarealistlikke väärtusi.
+-- Tulemus: Suurimad tehingud jäävad vahemikku 1 858,95 kuni 2 170,40 EUR.
+-- Järeldus: Esialgsel vaatlusel ei paista suurimate tehingute seas ebarealistlikke väärtusi.
 
 -- ============================================================
 -- 5. VÄIKSEIMAD TEHINGUD — ANDMEKVALITEEDI KONTROLL
@@ -108,8 +101,7 @@ WHERE total_price <=0               -- filtreerib 0 ning negatiivse väärtusega
 OR total_price IS NULL              -- kaasab ka tehingud, kus müügisumma puudub (NULL väärtus)
 ORDER BY total_price ASC;           -- Sorteerib kasvavalt, et kõige negatiivsemad summad oleksid tulemuse alguses
 
--- Järeldus:
--- Päring kuvab kõik negatiivsed, null- või puuduvad summad.
+-- Järeldus: Päring kuvab kõik negatiivsed, null- või puuduvad summad.
 
 --Täpsustus: 
 -- Mitu tehingut on negatiivse summaga ja milline on kogusumma?
@@ -120,7 +112,6 @@ COUNT(*) AS neg_tehing_tk,           -- negatiivsete tehingute arv
 SUM(total_price) AS neg_tehing_sum   -- negatiivsete tehingute kogusumma
 FROM sales        
 WHERE total_price < 0;               -- filtreerib ainult negatiivsed tehingud
-
 
 -- Tulemus:
 -- Negatiivsete summade vahemik: -1 405,32 kuni -16,37
@@ -158,7 +149,6 @@ FROM sales;
 -- Järeldus:
 -- Müügitulu analüüsi see otseselt ei mõjuta, kuid vähendab kliendikäitumise analüüsi kvaliteeti.
 -- Küsimus Roll D-le: Kas puuduvad kliendid esinevad pigem e-poes või füüsilistes kauplustes?
-
 
 -- ============================================================
 -- 7. TULEVIKU KUUPÄEVADEGA TEHINGUD
