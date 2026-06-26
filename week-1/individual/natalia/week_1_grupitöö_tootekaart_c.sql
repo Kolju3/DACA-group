@@ -3,13 +3,17 @@ ALAÜLESANDE KAART C: Tooteandmed - UrbanStyle
 Koostaja: Natalia Krassilnikova
 
 -- 1. Üldine toodete arv
-SELECT COUNT(*) AS toodete_arv FROM products;
+SELECT COUNT(*) AS toodete_arv 
+       FROM products;
 
 -- 2. Veergude struktuuri kontroll
-SELECT * FROM products LIMIT 10;
+SELECT * 
+       FROM products 
+       LIMIT 10;
 
 -- 3. Unikaalsed kategooriad
-SELECT DISTINCT category FROM products;
+SELECT DISTINCT category 
+       FROM products;
 
 -- 4. Kõige kallimad ja soodsamad tooted
 SELECT product_name, category, retail_price 
@@ -34,8 +38,10 @@ WHERE category = 'laste_riided'
 ORDER BY subcategory;
 
 -- 6. Andmete kvaliteedi kontroll (puuduvate väärtuste leidmine)
-SELECT COUNT(*) - COUNT(retail_price) AS puuduvad_hinnad FROM products;
-SELECT COUNT(*) - COUNT(category) AS puuduvad_kategooriad FROM products;
+SELECT COUNT(*) - COUNT(retail_price) AS puuduvad_hinnad 
+       FROM products;
+SELECT COUNT(*) - COUNT(category) AS puuduvad_kategooriad
+       FROM products;
 
 LISA 30% 
 
