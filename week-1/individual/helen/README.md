@@ -13,8 +13,8 @@ andmekvaliteedi vaatenurgast (summad, kuupäevad, kogused).
 
 ## Kasutatud tööriistad
 - **SQL / PostgreSQL** — andmepäringud 
-- **Supabase** — andmebaas pilves
-- **VS Code** — päringute kirjutamine ja salvestamine
+- **Supabase** — andmebaas pilves, päringute kirjutamine ja salvestamine
+- **VS Code** — peamine tööriist andmete vormistamiseks, organiseerimiseks ja GitHubi saatmiseks, kuigi päringute testimine ise toimub Supabase'is
 - **GitHub** — koodi versioonihaldus ja portfoolio
 
 ## Tehtud analüüs
