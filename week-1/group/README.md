@@ -50,4 +50,4 @@ Andmestik on valdavalt kasutuskõlblik, kuid vajab enne analüüsi etappi korras
 
 ## 🔗 Lingid tööriistadele
 * [GitHub Repository](https://github.com/Kolju3/DACA-group)
-* [NotebookLM esitlus]([https://notebooklm.google.com/](https://github.com/Kolju3/DACA-group/blob/main/week-1/group/UrbanStyle_week1_operatsioonid.pdf))
+
