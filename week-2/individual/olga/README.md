@@ -14,6 +14,12 @@ VÄLJUND
 Puhastamisraport (duplikaadid leitud, NULL-id leitud, formaadivead, soovitused) + SQL skript
 
 ## Mida tegin
+Mina puhastasin müügiandmeid. Leidsin 5116 duplikaatset rida ja 1487 NULL väärtust. See tähendab äriliselt, et müügiaruanded võivad olla ebatäpsed ning osa müüke ei ole võimalik konkreetsete klientidega siduda.
+
+Soovitus
+
+Toomas peaks esimesena eemaldama duplikaadid, sest neid on kõige rohkem (5116 rida) ning need võivad moonutada müügiaruandeid, käivet ja analüüse. Seejärel tuleks parandada või täiendada 1487 puuduvat customer_id väärtust, et kõik müügid oleksid seotud õige kliendiga. Kuna sale_date ja total_price väljad on korrektsed ning tuleviku kuupäevi ei esine, ei vaja need täiendavat puhastamist.
+
 Samm 1. Loo test koopia (ära tööta production tabelil!):
 CREATE TABLE sales_test AS SELECT * FROM sales;
 -- Taga unikaalne rea-tunnus dedup'i jaoks (lisab `id` AINULT siis, kui see puudub).
