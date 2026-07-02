@@ -3,6 +3,15 @@
 ## 📝 Ülesande kirjeldus
 Projekti eesmärk oli kontrollida müügiandmebaasi andmete terviklikkust. Analüüsi käigus tuvastati puuduvad seosed andmetes (orvud ja vaimkirjed) ning võrreldi müügitehingute hindu tootekataloogi hindadega, et tuvastada finantsilisi ebakõlasid.
 
+### 📋 Alaülesande kaart: Ristvalideerimine ja Kvaliteedikontroll
+
+| Element | Kirjeldus |
+| :--- | :--- |
+| **ROLL** | Kvaliteedikontrollija (Data Quality Analyst) |
+| **ÜLESANNE** | Valideeri andmete terviklikkust tabelite vahel — kas *sales* viitab olemasolevatele klientidele ja toodetele? Leia orbid ja ebakõlad. |
+| **SISEND** | Tabelid: *sales*, *customers*, *products* (Supabase) |
+| **VÄLJUND** | Ristvalideerimise raport (orbid leitud, ebakõlad leitud, soovitused) + SQL skript |
+
 ---
 
 ## 🛠️ Teostatud tegevused ja kasutatud funktsioonid
@@ -11,7 +20,8 @@ Analüüsiks kasutati SQL-i päringuid. Peamised kasutatud meetodid:
 * **`LEFT JOIN` / `RIGHT JOIN`**: Tabelite vaheliste seoste valideerimiseks.
 * **`COUNT()`**: Probleemsete kirjete arvu kokkulugemiseks.
 * **`IS NULL`**: "Vaimkirjete" (kliendid/tooted, mida pole kasutatud) tuvastamiseks.
-* **Võrdlusoperaatorid (`<>`)**: Müügihinna ja tootehinna vastavuse kontrollimiseks.
+* **`AVG()` / `ABS()`**: Müügihinna ja tootehinna erinevuste analüüsimiseks.
+* **`HAVING` / `ORDER BY`**: Ebakõlade filtreerimiseks ja järjestamiseks.
 
 ---
 
@@ -23,19 +33,26 @@ Kõik analüüsiks kasutatud SQL päringud on leitavad siit:
 
 ## 📊 Analüüsi tulemused
 
-| Kategooria | Leitud probleeme | Kirjeldus |
-| :--- | :---: | :--- |
-| **Orbid kliendid** | 0 | Müük viitab olematule kliendile |
-| **Orbid tooted** | 0 | Müük viitab olematule tootele |
-| **Vaimkliendid** | 592 | Klient ei ole kunagi ostnud |
-| **Vaimtooted** | 12 | Toodet pole kunagi müüdud |
-| **Hinna ebakõlad** | 664 | Müügihind ei klapi tootehinnaga |
-| **KOKKU** | **1268** | |
+| Kategooria | Leitud probleeme | Kirjeldus | Tõendusmaterjal (Pildid) |
+| :--- | :---: | :--- | :--- |
+| **Orbid kliendid** | 0 | Müük viitab olematule kliendile | [Pilt](https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/natalia/Orbid%20mu%CC%88u%CC%88gid.png) |
+| **Orbid tooted** | 0 | Müük viitab olematule tootele | [Pilt](https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/natalia/Orbid%20product.png) |
+| **Vaimkliendid** | 592 | Klient ei ole kunagi ostnud | [Pilt](https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/natalia/Kliendid%20kes%20pole%20kunagi%20ostud.png) |
+| **Vaimtooted** | 12 | Toodet pole kunagi müüdud | [Pilt](https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/natalia/Tooted%20mida%20ei%20ole%20mu%CC%88u%CC%88dud.png) |
+| **Hinna ebakõlad** | 664 | Müügihind ei klapi tootehinnaga | [Pilt](https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/natalia/Mu%CC%88u%CC%88gihinna%20vs%20tootehina%20erinevus.png) |
+| **Suurimad hinnaerinevused** | 10 (TOP) | Tooted suurima hinnaerinevusega | [Pilt](https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/natalia/Tooted%20suurima%20hinnaerinevusega.png) |
+| **KOKKU** | **1268** | **Koondtulemused** | [Vaata pilti](https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/natalia/Tulemused.png) |
 
 ---
 
-## 💡 Järeldus ja kriitiline analüüs
+## 💡 Järeldus ja ettepanekud
 
 **Milline probleem on Toomase jaoks kõige kriitilisem?**
 
-Toomase jaoks on kõige kriitilisemaks probleemiks **hinna ebakõlad**. Kuna need viitavad otsesele finantskahjule (müük toimub vale hinnaga võrreldes tootekataloogiga), on see kõige prioriteetsem teema, millega tuleb viivitamatult tegeleda, et vältida ettevõtte edasist raha kaotust.
+Toomase jaoks on kõige kriitilisemaks probleemiks **hinna ebakõlad**. Kuna need viitavad otsesele finantskahjule, on see kõige prioriteetsem teema, millega tuleb viivitamatult tegeleda.
+
+### Edasised ettepanekud:
+
+1. **Hinna ebakõlade parandamine:** See on prioriteet nr 1. Tuleb süsteemselt üle kontrollida müügihinna ja tootehinnakirja vastavus, eriti nende toodete puhul, kus erinevus on suurim.
+2. **Vaimtoodete analüüs:** Tooted, mida pole kunagi müüdud, tuleb üle vaadata. Kui tegemist on C-kategooria kaubaga, on soovitatav need müügilt maha võtta või suunata sooduskampaaniasse.
+3. **Vaimklientide aktiveerimine:** Tuleb analüüsida, miks 592 klienti pole kunagi ostu sooritanud ning käivitada nende aktiveerimiseks suunatud turunduskampaania.
