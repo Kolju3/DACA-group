@@ -1,4 +1,4 @@
-<img width="1536" height="1024" alt="SLAID ROLL A" src="https://github.com/user-attachments/assets/87d7d1f8-0d66-45af-af6e-19b630270d4c" />
+
 # Nädal 2 – olga individuaalne töö
 
 ## Ülesanne
