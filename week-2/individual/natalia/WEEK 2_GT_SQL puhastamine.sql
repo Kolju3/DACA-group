@@ -35,3 +35,13 @@ FROM sales s
 JOIN products p ON s.product_id = p.product_id
 WHERE ABS(s.total_price - (p.retail_price * s.quantity)) > 1
 ORDER BY ABS(s.total_price - (p.retail_price * s.quantity)) DESC
+
+Tooted suurima hinnaerinevusega: SELECT p.product_name, p.category, p.retail_price AS list_hind,
+       AVG(s.total_price / NULLIF(s.quantity, 0)) AS kesk_muugihind,
+       (p.retail_price - AVG(s.total_price / NULLIF(s.quantity, 0))) AS erinevus
+FROM products p
+JOIN sales s ON p.product_id = s.product_id
+GROUP BY p.product_id, p.product_name, p.category, p.retail_price
+HAVING ABS(p.retail_price - AVG(s.total_price / NULLIF(s.quantity, 0))) > 5
+ORDER BY ABS(p.retail_price - AVG(s.total_price / NULLIF(s.quantity, 0))) DESC
+LIMIT 10;
