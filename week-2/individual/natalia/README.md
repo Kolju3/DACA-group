@@ -3,6 +3,15 @@
 ## 📝 Ülesande kirjeldus
 Projekti eesmärk oli kontrollida müügiandmebaasi andmete terviklikkust. Analüüsi käigus tuvastati puuduvad seosed andmetes (orvud ja vaimkirjed) ning võrreldi müügitehingute hindu tootekataloogi hindadega, et tuvastada finantsilisi ebakõlasid.
 
+### 📋 Alaülesande kaart: Ristvalideerimine ja Kvaliteedikontroll
+
+| Element | Kirjeldus |
+| :--- | :--- |
+| **ROLL** | Kvaliteedikontrollija (Data Quality Analyst) |
+| **ÜLESANNE** | Valideeri andmete terviklikkust tabelite vahel — kas *sales* viitab olemasolevatele klientidele ja toodetele? Leia orbid ja ebakõlad. |
+| **SISEND** | Tabelid: *sales*, *customers*, *products* (Supabase) |
+| **VÄLJUND** | Ristvalideerimise raport (orbid leitud, ebakõlad leitud, soovitused) + SQL skript |
+
 ---
 
 ## 🛠️ Teostatud tegevused ja kasutatud funktsioonid
