@@ -72,7 +72,7 @@ See nädal õpetas mulle, et andmete puhastamine nõuab palju täpsust ja kannat
     3. **Puuduvate e-mailide strateegia**                         → äriline otsus, kas koguda aktiivselt või märkida eraldi
 
 ## Failid
-- `week2_customers_cleaning.sql` — kõik SQL päringud koos kommentaaride, leidude ja järeldustega
+[week2_customers_cleaning.sql](https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/helen/W2_GT_B_HT_Customers_Cleaning.sql) — kõik SQL päringud koos kommentaaride, leidude ja järeldustega
 
 ## Järgmised sammud
 Nädal 3-s õpime SQL JOIN-e — saame ühendada `customers`, `sales` ja `products` tabelid ning hakata vastama keerukamatele äriküsimustele.
