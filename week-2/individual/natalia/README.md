@@ -8,11 +8,11 @@ Projekti eesmärk oli kontrollida müügiandmebaasi andmete terviklikkust. Anal�
 ## 🛠️ Teostatud tegevused ja kasutatud funktsioonid
 Analüüsiks kasutati SQL-i päringuid. Peamised kasutatud meetodid:
 
-* **`LEFT JOIN` / `RIGHT JOIN`**: Tabelite vaheliste seoste valideerimiseks[cite: 1].
-* **`COUNT()`**: Probleemsete kirjete arvu kokkulugemiseks[cite: 1].
-* **`IS NULL`**: "Vaimkirjete" (kliendid/tooted, mida pole kasutatud) tuvastamiseks[cite: 1].
-* **`AVG()` / `ABS()`**: Müügihinna ja tootehinna erinevuste analüüsimiseks[cite: 2].
-* **`HAVING` / `ORDER BY`**: Ebakõlade filtreerimiseks ja järjestamiseks[cite: 2].
+* **`LEFT JOIN` / `RIGHT JOIN`**: Tabelite vaheliste seoste valideerimiseks.
+* **`COUNT()`**: Probleemsete kirjete arvu kokkulugemiseks.
+* **`IS NULL`**: "Vaimkirjete" (kliendid/tooted, mida pole kasutatud) tuvastamiseks.
+* **`AVG()` / `ABS()`**: Müügihinna ja tootehinna erinevuste analüüsimiseks.
+* **`HAVING` / `ORDER BY`**: Ebakõlade filtreerimiseks ja järjestamiseks.
 
 ---
 
@@ -40,10 +40,10 @@ Kõik analüüsiks kasutatud SQL päringud on leitavad siit:
 
 **Milline probleem on Toomase jaoks kõige kriitilisem?**
 
-Toomase jaoks on kõige kriitilisemaks probleemiks **hinna ebakõlad**. Kuna need viitavad otsesele finantskahjule, on see kõige prioriteetsem teema, millega tuleb viivitamatult tegeleda[cite: 2].
+Toomase jaoks on kõige kriitilisemaks probleemiks **hinna ebakõlad**. Kuna need viitavad otsesele finantskahjule, on see kõige prioriteetsem teema, millega tuleb viivitamatult tegeleda.
 
 ### Edasised ettepanekud:
 
-1. **Hinna ebakõlade parandamine:** See on prioriteet nr 1. Tuleb süsteemselt üle kontrollida müügihinna ja tootehinnakirja vastavus, eriti nende toodete puhul, kus erinevus on suurim[cite: 2].
-2. **Vaimtoodete analüüs:** Tooted, mida pole kunagi müüdud, tuleb üle vaadata. Kui tegemist on C-kategooria kaubaga, on soovitatav need müügilt maha võtta või suunata sooduskampaaniasse[cite: 2].
-3. **Vaimklientide aktiveerimine:** Tuleb analüüsida, miks 592 klienti pole kunagi ostu sooritanud ning käivitada nende aktiveerimiseks suunatud turunduskampaania[cite: 2].
+1. **Hinna ebakõlade parandamine:** See on prioriteet nr 1. Tuleb süsteemselt üle kontrollida müügihinna ja tootehinnakirja vastavus, eriti nende toodete puhul, kus erinevus on suurim.
+2. **Vaimtoodete analüüs:** Tooted, mida pole kunagi müüdud, tuleb üle vaadata. Kui tegemist on C-kategooria kaubaga, on soovitatav need müügilt maha võtta või suunata sooduskampaaniasse.
+3. **Vaimklientide aktiveerimine:** Tuleb analüüsida, miks 592 klienti pole kunagi ostu sooritanud ning käivitada nende aktiveerimiseks suunatud turunduskampaania.
