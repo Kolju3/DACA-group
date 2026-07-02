@@ -29,18 +29,12 @@ See nädal õpetas mulle, et andmete puhastamine nõuab palju täpsust ja kannat
 
 ## Tehtud analüüs
 
-1. **Test-koopia loomine** — `customers_test` tabel 
-   algandmete kaitsmiseks
-2. **Duplikaatsete e-mailide tuvastamine** — leidsin 
-   kliendid, kes on süsteemi sisestatud mitu korda
-3. **Puuduvate nimede kontrollimine** — NULL ja tühjade 
-   stringide tuvastamine kriitilistes väljades
-4. **Linnanimede kaardistamine** — ebajärjekindlate 
-   kirjaviiside tuvastamine kahes etapis
-5. **Kontaktandmete terviklikkus** — telefoni ja 
-   e-maili puudumise kontroll
-6. **Puhastusraport** — kõik leiud prioriteedi järgi 
-   koondatud ühte vaatesse
+1. **Test-koopia loomine** — `customers_test` tabel algandmete kaitsmiseks [Link] (https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/helen/1%20Testkoopia%20loomine.png)
+2. **Duplikaatsete e-mailide tuvastamine** — leidsin kliendid, kes on süsteemi sisestatud mitu korda [Link] (https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/helen/2%20duplikaatsed%20e-mailid.png)
+3. **Puuduvate nimede kontrollimine** — NULL ja tühjade stringide tuvastamine kriitilistes väljades [Link] (https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/helen/3%20puuduvad%20nimed.png)
+4. **Linnanimede kaardistamine** — ebajärjekindlate kirjaviiside tuvastamine kahes etapis [Link_1] (https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/helen/4A%20linnade%20nimekujud%20(54rida).png), [Link_2] (https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/helen/4B%20linnade%20nimekujud%20kaardistus%20(12rida).png)
+5. **Kontaktandmete terviklikkus** — telefoni ja e-maili puudumise kontroll [Link] (https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/helen/5%20puuduvad%20kontaktandmed.png)
+6. **Puhastusraport** — kõik leiud prioriteedi järgi koondatud ühte vaatesse [Link] (https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/helen/6%20puhastamisraport.png)
 
 ## Peamised leiud
 
