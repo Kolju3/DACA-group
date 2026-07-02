@@ -35,7 +35,7 @@
 |-------|--------|--------|--------|--------|
 | Nädal 0 | Kalju | Natalia | Olga | Helen |
 | Nädal 1 | Helen | Kalju | Natalia | Olga |
-| Nädal 2 | Olga | Helen | Kalju | Natalia |
+|# Nädal 2 | Olga | Helen | Kalju | Natalia |
 | Nädal 3 | Natalia | Olga | Helen | Kalju |
 | Nädal 4 | Kalju | Natalia | Olga | Helen |
 | Nädal 5 | Helen | Kalju | Natalia | Olga |
@@ -51,7 +51,7 @@
 
 1. **Abi küsimine:** Kirjutame Google Workspace Chati gruppi ning aitame üksteist esimesel võimalusel nõuannete, näidete või ekraanijagamisega.
 2. **Lisakohtumised:** Vajadusel lepime aja kokku Chatis. Regulaarseid lisakohtumisi pole planeeritud.
-3. **Grupitöö aeg:** Alates kell 16:00, kui kõigile sobib.
+3. **Grupitöö aeg:** Alates kell 16:00 neljapäeviti, kui kõigile sobib.
 4. **Failide jagamine:** GitHub projektifailide jaoks, Google Drive dokumentide ja õppematerjalide jaoks.
 
 ---
@@ -82,8 +82,8 @@ DACA-group/
 | Nädal | Teema | Ühine töö | Staatus |
 |-------|-------|-----------|---------|
 | Nädal 0 | Töökeskkonna seadistamine | [group →](./week-0/group/) | :white_check_mark: Valmis |
-| Nädal 1 | SQL põhitõed – sales tabeli uurimine | [group →](./week-1/group/) | :arrows_counterclockwise: Töös |
-| Nädal 2 | Andmete puhastamine | [group →](./week-2/group/) | :hourglass: Tulevikus |
+| Nädal 1 | SQL põhitõed – sales tabeli uurimine | [group →](./week-1/group/) | :white_check_mark: Valmis |
+| Nädal 2 | Andmete puhastamine | [group →](./week-2/group/) | :arrows_counterclockwise: Töös  |
 | Nädal 3 | SQL JOIN-id | [group →](./week-3/group/) |  :hourglass: Tulevikus |
 | Nädal 4 | GROUP BY ja agregatsioonid | [group →](./week-4/group/) |  :hourglass: Tulevikus |
 | Nädal 5 | Klientide segmenteerimine | [group →](./week-5/group/) |  :hourglass: Tulevikus |
