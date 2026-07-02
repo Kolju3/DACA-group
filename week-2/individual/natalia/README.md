@@ -23,14 +23,14 @@ Kõik analüüsiks kasutatud SQL päringud on leitavad siit:
 
 ## 📊 Analüüsi tulemused
 
-| Kategooria | Leitud probleeme | Kirjeldus |
-| :--- | :---: | :--- |
-| **Orbid kliendid** | 0 | Müük viitab olematule kliendile |
-| **Orbid tooted** | 0 | Müük viitab olematule tootele |
-| **Vaimkliendid** | 592 | Klient ei ole kunagi ostnud |
-| **Vaimtooted** | 12 | Toodet pole kunagi müüdud |
-| **Hinna ebakõlad** | 664 | Müügihind ei klapi tootehinnaga |
-| **KOKKU** | **1268** | |
+| Kategooria | Leitud probleeme | Kirjeldus | Tõendusmaterjal (Pildid) |
+| :--- | :---: | :--- | :--- |
+| **Orbid kliendid** | 0 | Müük viitab olematule kliendile | [Pilt](https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/natalia/Orbid%20mu%CC%88u%CC%88gid.png) |
+| **Orbid tooted** | 0 | Müük viitab olematule tootele | [Pilt](https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/natalia/Orbid%20product.png) |
+| **Vaimkliendid** | 592 | Klient ei ole kunagi ostnud | [Pilt](https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/natalia/Kliendid%20kes%20pole%20kunagi%20ostud.png) |
+| **Vaimtooted** | 12 | Toodet pole kunagi müüdud | [Pilt](https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/natalia/Tooted%20mida%20ei%20ole%20mu%CC%88u%CC%88dud.png) |
+| **Hinna ebakõlad** | 664 | Müügihind ei klapi tootehinnaga | [Pilt](https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/natalia/Mu%CC%88u%CC%88gihinna%20vs%20tootehina%20erinevus.png) |
+| **KOKKU** | **1268** | - | [Kõik tulemused](https://github.com/Kolju3/DACA-group/tree/main/week-2/individual/natalia) |
 
 ---
 
