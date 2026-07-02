@@ -1,3 +1,4 @@
+
 # Nädal 2 – olga individuaalne töö
 
 ## Ülesanne
