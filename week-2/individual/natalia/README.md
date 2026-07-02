@@ -23,7 +23,7 @@ Kõik analüüsiks kasutatud SQL päringud on leitavad siit:
 
 ## 📊 Analüüsi tulemused
 
-| Kategooria | Leitud probleeme | Kirjeldus | Tõendusmaterjal (Pildid) |
+| Kategooria | Leitud probleeme | Kirjeldus | Tõendusmaterjal |
 | :--- | :---: | :--- | :--- |
 | **Orbid kliendid** | 0 | Müük viitab olematule kliendile | [Pilt](https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/natalia/Orbid%20mu%CC%88u%CC%88gid.png) |
 | **Orbid tooted** | 0 | Müük viitab olematule tootele | [Pilt](https://github.com/Kolju3/DACA-group/blob/main/week-2/individual/natalia/Orbid%20product.png) |
@@ -34,8 +34,14 @@ Kõik analüüsiks kasutatud SQL päringud on leitavad siit:
 
 ---
 
-## 💡 Järeldus ja kriitiline analüüs
+## 💡 Järeldused ja ettepanekud
 
 **Milline probleem on Toomase jaoks kõige kriitilisem?**
 
-Toomase jaoks on kõige kriitilisemaks probleemiks **hinna ebakõlad**. Kuna need viitavad otsesele finantskahjule (müük toimub vale hinnaga võrreldes tootekataloogiga), on see kõige prioriteetsem teema, millega tuleb viivitamatult tegeleda, et vältida ettevõtte edasist raha kaotust.
+Toomase jaoks on kõige kriitilisemaks probleemiks **hinna ebakõlad**. See on otsene finantskahju, mis nõuab viivitamatut sekkumist, et vältida ettevõtte edasist raha kaotust.
+
+**Edasised ettepanekud ja tegevuskava:**
+
+1.  **Hinna ebakõlade likvideerimine:** Prioriteet number üks. Tuleb auditeerida müügisüsteemi ja kataloogi vaheline andmevahetus ning korrigeerida valed hinnakirjed.
+2.  **Vaimtoodete inventuur:** Kuna tegemist on 12 tootega, mida pole kunagi müüdud (võimalik C-kategooria kaup), tuleks kontrollida nende laojääke. Kui laos seisab kaup, mida ei osteta, tuleks kaaluda nende müügilt maha võtmist või likvideerimist/soodusmüüki.
+3.  **Vaimklientide aktiveerimine:** Tuleks analüüsida, miks 592 klienti pole kunagi ühtegi ostu sooritanud. Soovitatav on käivitada sihtotstarbeline turunduskampaania (näiteks tervituspakkumine või kliendiküsitlus), et muuta need kontaktid aktiivseteks ostjateks.
