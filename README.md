@@ -35,8 +35,8 @@
 |-------|--------|--------|--------|--------|
 | Nädal 0 | Kalju | Natalia | Olga | Helen |
 | Nädal 1 | Helen | Kalju | Natalia | Olga |
-|# Nädal 2 | Olga | Helen | Kalju | Natalia |
-| Nädal 3 | Natalia | Olga | Helen | Kalju |
+| Nädal 2 | Olga | Helen | Kalju | Natalia |
+|#  Nädal 3 | Natalia | Olga | Helen | Kalju |
 | Nädal 4 | Kalju | Natalia | Olga | Helen |
 | Nädal 5 | Helen | Kalju | Natalia | Olga |
 | Nädal 6 | Olga | Helen | Kalju | Natalia |
@@ -83,8 +83,8 @@ DACA-group/
 |-------|-------|-----------|---------|
 | Nädal 0 | Töökeskkonna seadistamine | [group →](./week-0/group/) | :white_check_mark: Valmis |
 | Nädal 1 | SQL põhitõed – sales tabeli uurimine | [group →](./week-1/group/) | :white_check_mark: Valmis |
-| Nädal 2 | Andmete puhastamine | [group →](./week-2/group/) | :arrows_counterclockwise: Töös  |
-| Nädal 3 | SQL JOIN-id | [group →](./week-3/group/) |  :hourglass: Tulevikus |
+| Nädal 2 | Andmete puhastamine | [group →](./week-2/group/) | :white_check_mark: Valmis   |
+| Nädal 3 | SQL JOIN-id | [group →](./week-3/group/) |  :arrows_counterclockwise: Töös |
 | Nädal 4 | GROUP BY ja agregatsioonid | [group →](./week-4/group/) |  :hourglass: Tulevikus |
 | Nädal 5 | Klientide segmenteerimine | [group →](./week-5/group/) |  :hourglass: Tulevikus |
 | Nädal 6 | Visualiseerimine | [group →](./week-6/group/) |  :hourglass: Tulevikus |
