@@ -4,13 +4,16 @@
 
 UrbanStyle’i andmestikus analüüsiti toodete, müükide ja inventuuri seoseid. Fookus oli küsimusel, kas tootekataloogis olevad tooted tegelikult müüvad ning kas laoseis toetab ärilisi otsuseid.
 
-Analüüs vastab eelkõige järgmistele küsimustele:
+Analüüs vastab järgmistele küsimustele:
 
 - Millised tooted on kataloogis, aga ei ole kunagi müüki tekitanud?
 - Kui suur on müümata toodete probleem?
 - Millised tooted ja kategooriad müüvad kõige paremini?
 - Milliste toodete laoseis vajab tähelepanu?
-- Kas andmetes on inventuuri kvaliteediprobleeme?
+- Kas inventuuriandmetes on andmekvaliteedi või varude planeerimise probleeme?
+- Kas lisaks madalale laoseisule esineb ka võimalikku ülevaru?
+
+---
 
 ## Kasutatud tabelid
 
@@ -24,11 +27,12 @@ Analüüs vastab eelkõige järgmistele küsimustele:
 
 Analüüsis kasutati järgmisi SQL võtteid:
 
-- `LEFT JOIN` — toodete säilitamiseks ka siis, kui müüki või inventuuri vastet ei ole.
+- `LEFT JOIN` — toodete säilitamiseks ka siis, kui müügi- või inventuurivastet ei ole.
 - `INNER JOIN` — ainult tegelikult müüdud toodete leidmiseks.
 - `COUNT`, `COUNT(DISTINCT ...)`, `SUM`, `AVG` — mahtude ja müügitulemuste koondamiseks.
 - `GROUP BY` — tulemuste koondamiseks toote ja kategooria tasemel.
 - `CASE WHEN` — inventuuri staatuse määramiseks.
+- `NULLIF` — jagamisel nulliga seotud vea vältimiseks ülevaru kordaja arvutamisel.
 - `ORDER BY` ja `LIMIT` — olulisemate tulemuste esiletoomiseks.
 
 ---
@@ -89,9 +93,9 @@ Kategooriate analüüs näitas, millised kategooriad annavad suurima kogumüügi
 
 ---
 
-## 4. Inventuuri soovitused
+## 4. Inventuuri täpsustatud staatused
 
-Inventuuri päringus kasutati loogikat:
+Algne inventuuri päring kasutas lihtsustatud loogikat:
 
 ```sql
 CASE
@@ -100,60 +104,128 @@ CASE
 END AS staatus
 ```
 
-Päring tagastas **1 412 toote-asukoha rida**.
+See oli kasulik esmane kontroll, kuid ei eristanud piisavalt erinevaid ärilisi olukordi. Täpsustatud loogikas eraldati:
 
-| Näitaja | Tulemus |
-|---|---:|
-| Inventuuri ridu kokku | 1 412 |
-| `TELLI JUURDE` staatuses ridu | 231 |
-| `OK` staatuses ridu | 1 181 |
-| Negatiivse laoseisuga ridu | 10 |
-| Null-laoseisuga ridu | 7 |
-| Inventuurivasteta tooteridu | 12 |
+1. negatiivsed laoseisud — võimalik andmekvaliteedi või protsessiviga;
+2. puuduv inventuurivaste — `LEFT JOIN` annab inventuuri veergudes `NULL`;
+3. tavapärane madal laoseis — tellimispunktist madalam või sellega võrdne kogus;
+4. võimalik ülevaru — kogus on vähemalt 3 korda üle tellimispunkti;
+5. korras vahemik — ei ole madal, puuduv, negatiivne ega ülevaru kontrolli järgi ekstreemne.
 
-### Inventuuri tähelepanekud kategooriate kaupa
-
-| Kategooria | Inventuuri ridu | `TELLI JUURDE` ridu | Negatiivse laoseisuga ridu | Inventuurivasteta ridu |
-|---|---:|---:|---:|---:|
-| meeste_riided | 325 | 58 | 2 | 1 |
-| jalanõusid | 286 | 48 | 0 | 2 |
-| laste_riided | 274 | 48 | 2 | 2 |
-| aksessuaarid | 253 | 42 | 2 | 5 |
-| naiste_riided | 274 | 35 | 4 | 2 |
-
-### Oluline andmekvaliteedi tähelepanek
-
-Inventuuris esineb **negatiivseid laoseise**. Need ei ole tavalised tellimissoovitused, vaid võimalikud andmevead või protsessivead. Näiteks võivad need viidata:
-
-- müükidele, mis on laost maha arvestatud enne tegeliku laoseisu korrigeerimist;
-- inventuuri ja müügisüsteemi sünkroonimisprobleemile;
-- tagastuste või korrigeerimiste puudumisele;
-- laoliikumiste hilinenud sisestamisele.
-
-**Järeldus:** negatiivsed laoseisud tuleb enne tellimisotsuseid eraldi kontrollida.
-
----
-
-## 5. Tähelepanek SQL loogika kohta
-
-Praegune inventuuri `CASE` loogika märgib `quantity_available <= reorder_point` read staatusega `TELLI JUURDE`, kuid `NULL` inventuuriväärtused liiguvad `ELSE 'OK'` alla. See võib olla eksitav, sest inventuurivasteta toode ei tähenda automaatselt, et kõik on korras.
-
-Täpsustatum loogika oleks:
+Täpsustatud staatuseloogika:
 
 ```sql
 CASE
     WHEN i.product_id IS NULL THEN 'INVENTUUR PUUDUB'
     WHEN i.quantity_available < 0 THEN 'KONTROLLI LAOSEISU'
     WHEN i.quantity_available <= i.reorder_point THEN 'TELLI JUURDE'
+    WHEN i.reorder_point > 0
+         AND i.quantity_available >= i.reorder_point * 3 THEN 'VÕIMALIK ÜLEVARU'
     ELSE 'OK'
 END AS staatus
 ```
 
-See eristab kolm äriliselt erinevat olukorda:
+**Märkus:** `reorder_point` ei ole maksimaalne lubatud laoseis. See on tellimispunkt ehk piir, millest allapoole minnes peaks varu täiendama. Seetõttu on `VÕIMALIK ÜLEVARU` analüütiline riskimärgis, mitte lõplik tõend ülevaru kohta.
 
-1. inventuuri vaste puudub;
-2. laoseis on negatiivne;
-3. laoseis on madal ja vajab täiendamist.
+### Inventuuri koondvaade
+
+| Staatus | Ridu | Tõlgendus |
+|---|---:|---|
+| `VÕIMALIK ÜLEVARU` | 730 | Laoseis on vähemalt 3 korda suurem kui tellimispunkt. Vajab käibe, hooajalisuse ja ostuplaani kontrolli. |
+| `OK` | 439 | Laoseis ei ole madal, negatiivne, puuduv ega ülevaru kontrolli järgi ekstreemne. |
+| `TELLI JUURDE` | 221 | Laoseis on tellimispunktist madalam või sellega võrdne. |
+| `INVENTUUR PUUDUB` | 12 | Tootel puudub inventuurivaste. Seda ei tohi lugeda korras seisuks. |
+| `KONTROLLI LAOSEISU` | 10 | Laoseis on negatiivne. Vajab andmekvaliteedi või protsessikontrolli. |
+| **Kokku** | **1 412** | Toote-asukoha taseme inventuuriandmed. |
+
+### Inventuuri staatused kategooriate kaupa
+
+| Kategooria | Inventuur puudub | Kontrolli laoseisu | OK | Telli juurde | Võimalik ülevaru | Kokku |
+|---|---:|---:|---:|---:|---:|---:|
+| meeste_riided | 1 | 2 | 102 | 56 | 164 | 325 |
+| jalanõusid | 2 | 0 | 90 | 48 | 146 | 286 |
+| laste_riided | 2 | 2 | 77 | 46 | 147 | 274 |
+| naiste_riided | 2 | 4 | 86 | 31 | 151 | 274 |
+| aksessuaarid | 5 | 2 | 84 | 40 | 122 | 253 |
+
+**Peamine täpsustus:** varude probleem ei ole ühepoolne. Andmetes esineb korraga nii madalat või negatiivset laoseisu kui ka väga suuri laoseise võrreldes tellimispunktiga.
+
+---
+
+## 5. Negatiivsed laoseisud ja puuduv inventuur
+
+Inventuuris esineb **10 negatiivse laoseisuga rida**. Need ei ole tavalised tellimissoovitused, vaid võimalikud andmevead või protsessivead. Näiteks võivad need viidata:
+
+- müükidele, mis on laost maha arvestatud enne tegeliku laoseisu korrigeerimist;
+- inventuuri ja müügisüsteemi sünkroonimisprobleemile;
+- tagastuste või korrigeerimiste puudumisele;
+- laoliikumiste hilinenud sisestamisele.
+
+Lisaks on **12 tootel inventuurivaste puudu**. `LEFT JOIN` puhul tähendab see, et toode on olemas tootetabelis, aga vastavat rida inventuuritabelis ei ole.
+
+**Järeldus:** negatiivsed laoseisud ja inventuurivasteta tooted tuleb enne tellimisotsuseid eraldi kontrollida. Need ei tohiks minna automaatselt `OK` ega tavapärase `TELLI JUURDE` alla.
+
+---
+
+## 6. Võimalik ülevaru
+
+Ülevaru kontrolliks kasutati täiendavat päringut, mis märgib toote-asukoha read, kus `quantity_available >= reorder_point * 3`.
+
+```sql
+SELECT
+    p.product_name,
+    p.category,
+    i.location,
+    i.quantity_available,
+    i.reorder_point,
+    i.quantity_available - i.reorder_point AS ule_tellimispunkti,
+    ROUND(i.quantity_available::numeric / NULLIF(i.reorder_point, 0), 2) AS kordaja
+FROM products p
+INNER JOIN inventory i
+    ON p.product_id = i.product_id
+WHERE i.reorder_point > 0
+  AND i.quantity_available >= i.reorder_point * 3
+ORDER BY kordaja DESC, ule_tellimispunkti DESC;
+```
+
+### Ülevaru kontrolli koond
+
+| Näitaja | Tulemus |
+|---|---:|
+| Võimaliku ülevaru ridu | 730 |
+| Erinevaid tootenimesid | 331 |
+| Ridu kordajaga vähemalt 5x | 455 |
+| Ridu kordajaga vähemalt 10x | 214 |
+| Ridu kordajaga vähemalt 20x | 79 |
+| Ridu kordajaga vähemalt 100x | 31 |
+| Suurim kordaja | 628.60x |
+
+### Võimaliku ülevaru read kategooriate kaupa
+
+| Kategooria | Võimaliku ülevaru ridu | Erinevaid tootenimesid | Laoseis kokku | Üle tellimispunkti kokku | Suurim kordaja |
+|---|---:|---:|---:|---:|---:|
+| meeste_riided | 164 | 78 | 93 102 | 89 092 | 527.53 |
+| naiste_riided | 151 | 66 | 57 519 | 53 838 | 448.59 |
+| laste_riided | 147 | 64 | 68 641 | 64 950 | 237.81 |
+| jalanõusid | 146 | 65 | 78 921 | 75 397 | 628.60 |
+| aksessuaarid | 122 | 58 | 43 984 | 40 869 | 231.53 |
+
+### TOP 10 kõige suurema ülevaru kordajaga rida
+
+| Koht | Toode | Kategooria | Asukoht | Laoseis | Tellimispunkt | Üle tellimispunkti | Kordaja |
+|---:|---|---|---|---:|---:|---:|---:|
+| 1 | Minimalistlik sünteetiline saapad | jalanõusid | ladu | 9 429 | 15 | 9 414 | 628.60 |
+| 2 | Õhuline sünteetiline rannasandaalid | jalanõusid | tartu | 9 479 | 17 | 9 462 | 557.59 |
+| 3 | Trendikas džersii slim-fit püksid | meeste_riided | ladu | 8 968 | 17 | 8 951 | 527.53 |
+| 4 | Stiilne džersii püksid | meeste_riided | ladu | 5 321 | 11 | 5 310 | 483.73 |
+| 5 | Soe satiinne pluus | naiste_riided | ladu | 7 626 | 17 | 7 609 | 448.59 |
+| 6 | Mugav tweed kardigan | meeste_riided | ladu | 7 029 | 16 | 7 013 | 439.31 |
+| 7 | Boheemlaslik goretex kingad | jalanõusid | pärnu | 7 588 | 21 | 7 567 | 361.33 |
+| 8 | Kerge satiinne jakk | naiste_riided | tartu | 9 985 | 39 | 9 946 | 256.03 |
+| 9 | Õhuline sünteetiline kõrge kontsaga kingad | jalanõusid | tallinn | 6 821 | 27 | 6 794 | 252.63 |
+| 10 | Luksuslik villane bleiser | laste_riided | pärnu | 7 372 | 31 | 7 341 | 237.81 |
+
+**Järeldus:** ülevaru kontroll on sama oluline kui `TELLI JUURDE` kontroll. Mõnes reas on laoseis tellimispunktist sadu kordi kõrgem. See võib tähendada liigset sisseostu, aeglast käivet, hooajalisuse mõju, laoliikumiste sisestusviga või andmeimpordi probleemi.
 
 ---
 
@@ -162,28 +234,37 @@ See eristab kolm äriliselt erinevat olukorda:
 1. Kataloogis on **12 toodet**, millel puudub müük.
 2. Suurima kogumüügiga kategooria on **jalanõusid**.
 3. Meeste riided annavad kõige rohkem müügikordi, kuid jalanõud annavad suurema kogumüügi.
-4. Inventuuris on **231 toote-asukoha rida**, kus kogus on tellimispunktist väiksem või sellega võrdne.
+4. Inventuuris on **221 toote-asukoha rida**, kus kogus on tellimispunktist väiksem või sellega võrdne.
 5. Inventuuris on **10 negatiivse laoseisuga rida**, mis vajavad andmekvaliteedi kontrolli.
 6. **12 tootel puudub inventuurivaste**, mistõttu need ei tohiks vaikimisi saada staatust `OK`.
+7. Lisaks madalale laoseisule esineb **730 võimalikku ülevaru rida**, kus laoseis on vähemalt 3 korda suurem kui tellimispunkt.
+8. Ülevaru kontrollis on **214 rida**, kus laoseis on vähemalt 10 korda suurem kui tellimispunkt, ning **31 rida**, kus kordaja on vähemalt 100.
 
 ## Suurim üllatus
 
-Suurim üllatus oli see, et inventuuris leidus negatiivseid laoseise. See ei ole ainult varude täiendamise küsimus, vaid viitab võimalikule andmete või protsessi probleemile.
+Suurim üllatus oli see, et inventuuri probleem on kahesuunaline. Andmetes ei ole ainult puudujäägid ja negatiivsed laoseisud, vaid ka väga suured laoseisud võrreldes tellimispunktiga. See tähendab, et UrbanStyle’i varude juhtimise risk ei ole ainult müügikaotus madala laoseisu tõttu, vaid ka kapitali sidumine võimalikus ülevarus.
 
 ## Soovitus Toomasele
 
-Toomas peaks enne varude täiendamise või sortimendi muutmise otsuseid eraldama kolm juhtumit: müümata tooted, madala laoseisuga tooted ja vigase/puuduva inventuuriandmega tooted. Eriti tuleks kontrollida negatiivseid laoseise ja 12 toodet, millel puudub müügi- või inventuuriseos.
+Toomas peaks käsitlema inventuuri nelja eraldi töövoona:
+
+1. **Andmekvaliteet:** kontrollida negatiivseid laoseise ja inventuurivasteta tooteid.
+2. **Puudujääk:** vaadata üle `TELLI JUURDE` read, eriti tugeva müügiga kategooriates.
+3. **Ülevaru:** analüüsida ridu, kus laoseis on vähemalt 3 korda üle tellimispunkti, ning eraldi kontrollida ekstreemseid 10x, 20x ja 100x juhtumeid.
+4. **Sortiment:** kontrollida 12 müümata toodet ja otsustada, kas need on aktiivsed, lõpetatud või fantoomtooted.
 
 ## Puuduvad andmed
 
 Analüüsi täpsustamiseks oleks vaja järgmisi andmeid:
 
-- kas toode on aktiivne, lõpetatud või testtoode;
+- kas toode on aktiivne, lõpetatud, hooajaline või testtoode;
 - millal toode kataloogi lisati;
-- ostutellimused ja saabuvad kogused;
+- ostutellimused ja juba teel olevad kogused;
 - toote omahind ja tegelik marginaal;
+- toote müügikiirus ja viimase müügi kuupäev;
 - laoliikumiste ajalugu;
 - tarnija ja tarneaeg;
+- miinimum- ja maksimumvaru poliitika;
 - kampaaniate või allahindluste info.
 
 ## Failid
@@ -191,12 +272,18 @@ Analüüsi täpsustamiseks oleks vaja järgmisi andmeid:
 - `W3_GT_C_HT_Tooted + Inventuur (LEFT JOIN).sql` — SQL päringud toodete, müügi ja inventuuri analüüsiks.
 - `1. LEFT JOIN_ tooted, mida pole kunagi müüdud.png` — müümata toodete päringu tulemus.
 - `2. Müümata toodete arv.png` — müümata toodete arvu kontroll.
-- `--3.1 Enim müüdud tooted (10).png` — TOP 10 toodete tulemus.
+- `3. Enim müüdud tooted (10).png` — TOP 10 toodete tulemus.
 - `4. Müügianalüüs kategooriate kaupa.png` — kategooriate müügianalüüs.
-- `5. Inventuuri soovitused.png` — inventuuri staatuse päringu tulemus.
-- `inventuuri soovitused.md` — inventuuri detailtabel.
+- `5.1 Inventuuri soovitused.png` — esialgse inventuuripäringu tulemus.
+- `5.1. Inventuuri soovitused.md` — esialgne inventuuri detailtabel.
+- - `5.1 Inventuuri soovitused_täpsustatud.png` — täpsustatud inventuuripäringu tulemus.
+- `5.2. Invetuuri soovitused_täpsustatud.md` — täpsustatud inventuuri staatuste tabel.
+- `6A. Ülevaru kontroll_laoseis oluliselt üle tellimispunkti.md` — ülevaru kontrolli detailtabel.
 
 ## Kokkuvõte
+
+Toote- ja inventuuriandmed annavad UrbanStyle’ile hea aluse sortimendi ja varude juhtimiseks, kuid enne otsuste tegemist tuleb korrastada andmekvaliteedi ja varude planeerimise probleemid. Müügianalüüs näitab tugevaid kategooriaid, eriti jalanõusid ja meeste riideid, kuid inventuurianalüüs näitab, et osa laoseisudest on negatiivsed või inventuurivasteta ning suur osa ridu on võimalikud ülevaru juhtumid. Seetõttu peaks järgmine samm olema varude ja andmekvaliteedi kontroll, mitte automaatne tellimisotsus
+
 
 Toote- ja inventuuriandmed annavad UrbanStyle’ile hea aluse sortimendi ja varude juhtimiseks, kuid enne otsuste tegemist tuleb korrastada andmekvaliteedi probleemid. Müügianalüüs näitab tugevaid kategooriaid, eriti jalanõusid ja meeste riideid, kuid inventuurianalüüs näitab, et osa laoseisudest on negatiivsed või inventuurivasteta. Seetõttu peaks järgmine samm olema andmekvaliteedi kontroll, mitte automaatne tellimisotsus.
 
