@@ -1,0 +1,22 @@
+| first_name | last_name | email                   | city    | sale_id | sale_date           | total_price |
+| ---------- | --------- | ----------------------- | ------- | ------- | ------------------- | ----------- |
+| Madis      | Roots     | madis.roots@mail.ee     | Valga   | 2407    | 2023-07-08 00:00:00 | 2170.40     |
+| Laura      | Tammik    | laura.tammik@yahoo.com  | Pärnu   | 3805    | 2023-11-22 00:00:00 | 2013.10     |
+| Kati       | Teder     | kati.teder@yahoo.com    | Tallinn | 8271    | 2024-10-30 00:00:00 | 1881.65     |
+| Toomas     | Sild      | null                    | Tartu   | 1157    | 2023-04-11 00:00:00 | 1881.65     |
+| Tiina      | Pärn      | tiina.parn@gmail.com    | Tartu   | 8495    | 2024-10-19 00:00:00 | 1876.70     |
+| Väino      | Rosin     | vaino.rosin@outlook.com | Tallinn | 8379    | 2024-10-06 00:00:00 | 1872.70     |
+| Raivo      | Nurk      | raivo.nurk@gmail.com    | Jõhvi   | 1925    | 2023-06-28 00:00:00 | 1858.95     |
+| Külli      | Sild      | kulli.sild@mail.ee      | Tartu   | 3441    | 2023-10-03 00:00:00 | 1858.95     |
+| Indrek     | Laas      | indrek.laas@outlook.com | Tallinn | 1664    | 2023-06-04 00:00:00 | 1843.35     |
+| Maie       | Pärn      | maie.parn@hot.ee        | Pärnu   | 365     | 2023-02-19 00:00:00 | 1792.05     |
+| Rein       | Lill      | rein.lill@hot.ee        | Tartu   | 7906    | 2024-09-21 00:00:00 | 1782.85     |
+| Madis      | Mitt      | madis.mitt@yahoo.com    | Narva   | 3369    | 2023-10-20 00:00:00 | 1782.85     |
+| Mart       | Liiv      | mart.liiv@yahoo.com     | Tallinn | 7669    | 2024-08-04 00:00:00 | 1756.65     |
+| Maie       | Tammik    | maie.tammik2@mail.ee    | Tallinn | 3634    | 2023-11-25 00:00:00 | 1756.65     |
+| Kevin      | Org       | kevin.org@yahoo.com     | Tallinn | 6773    | 2024-07-11 00:00:00 | 1750.95     |
+| Siim       | Männik    | siim.mannik@yahoo.com   | Tallinn | 7543    | 2024-08-06 00:00:00 | 1739.20     |
+| Merike     | Laas      | merike.laas@yahoo.com   | Tartu   | 9481    | 2025-01-08 00:00:00 | 1736.32     |
+| Heino      | Mitt      | heino.mitt@hot.ee       | Tallinn | 5816    | 2024-05-24 00:00:00 | 1736.32     |
+| Tiit       | Arro      | tiit.arro@hot.ee        | Tallinn | 9684    | 2025-01-15 00:00:00 | 1736.32     |
+| Lea        | Lill      | lea.lill@mail.ee        | Tallinn | 6601    | 2024-06-20 00:00:00 | 1696.05     |
