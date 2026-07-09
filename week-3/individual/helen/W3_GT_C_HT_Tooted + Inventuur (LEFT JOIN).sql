@@ -126,7 +126,7 @@ ORDER BY kogumuuk DESC;
 -- GT juhendi loogika: kui quantity_available <= reorder_point, märgi 'TELLI JUURDE'.
 -- ------------------------------------------------------------
 -- Inventuur: millised tooted on laos ja kas kogus vajab tähelepanu?
-5.1. Esmane
+-- 5.1. Esmane
 SELECT
     p.product_name, p.category, i.location, i.quantity_available, i.reorder_point,
     CASE
@@ -138,12 +138,14 @@ LEFT JOIN inventory i
     ON p.product_id = i.product_id
 ORDER BY i.quantity_available ASC;
 
-5.2 Täpsustatud loogika:
+-- 5.2. Täpsustatud loogika:
 SELECT
     p.product_name, p.category, i.location, i.quantity_available, i.reorder_point,CASE
     WHEN i.product_id IS NULL THEN 'INVENTUUR PUUDUB'
     WHEN i.quantity_available < 0 THEN 'KONTROLLI LAOSEISU'
     WHEN i.quantity_available <= i.reorder_point THEN 'TELLI JUURDE'
+    WHEN i.reorder_point > 0
+        AND i.quantity_available >= i.reorder_point * 3 THEN 'VÕIMALIK ÜLEVARU'
     ELSE 'OK'
 END AS staatus
 FROM products p
@@ -166,6 +168,7 @@ LEFT JOIN inventory i
 WHERE s.sale_id IS NULL
   AND i.quantity_available > 0
 ORDER BY kinni_olev_raha DESC;
+
 
 --Lisapäring - kontrollimaks müüke
 SELECT 
