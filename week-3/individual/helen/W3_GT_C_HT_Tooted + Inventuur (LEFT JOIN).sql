@@ -167,7 +167,6 @@ WHERE s.sale_id IS NULL
   AND i.quantity_available > 0
 ORDER BY kinni_olev_raha DESC;
 
-
 --Lisapäring - kontrollimaks müüke
 SELECT 
     p.product_id,
