@@ -1,33 +1,20 @@
-# Presentatsiooni alusfail — Nädal 3, Roll C: Tooted + inventuur
+# Tulemuste koond — Nädal 3, Roll C: Tooted + inventuur
 
-## 1. Ühe lausega kokkuvõte
+See fail koondab detailsemad tabelid, mida README-s ei ole mõistlik pikalt dubleerida. Faili saab kasutada grupi koondmaterjalis ja presentatsiooni ettevalmistamisel.
 
-Toote-, müügi- ja inventuuriandmete ühendamine näitas, et UrbanStyle’i varude juhtimise probleem on kahesuunaline: osa tooteid vajab juurde tellimist või andmekvaliteedi kontrolli, kuid osa laoseise on võrreldes tellimispunktiga ebaproportsionaalselt suured.
+## 1. Peamised kontrolltulemused
 
-## 2. Analüüsi eesmärk
+| Kontroll | Tulemus | Märkus |
+|---|---:|---|
+| Müümata tooted | 12 | `products LEFT JOIN sales`, kus `s.sale_id IS NULL` |
+| Inventuuri ridu kokku | 1 412 | Toote-asukoha taseme read |
+| `TELLI JUURDE` | 221 | Laoseis on tellimispunktist madalam või sellega võrdne |
+| `KONTROLLI LAOSEISU` | 10 | Negatiivne laoseis |
+| `INVENTUUR PUUDUB` | 12 | Tootel puudub inventuurivaste |
+| `VÕIMALIK ÜLEVARU` | 730 | Laoseis vähemalt 3 korda üle tellimispunkti |
+| `OK` | 439 | Ei kuulu eelnevatesse tähelepanu vajavatesse gruppidesse |
 
-Minu roll oli kasutada `LEFT JOIN` loogikat, et siduda tootekataloog müügi- ja inventuuriandmetega. Eesmärk oli leida:
-
-- tooted, mida ei ole kunagi müüdud;
-- kõige tugevamad tooted ja kategooriad;
-- inventuuri read, mis vajavad tähelepanu;
-- võimalikud ülevaru juhtumid.
-
-## 3. Peamised arvud
-
-| Näitaja | Tulemus |
-|---|---:|
-| Müümata tooteid | 12 |
-| Inventuuri ridu kokku | 1 412 |
-| `TELLI JUURDE` ridu | 221 |
-| Negatiivse laoseisuga ridu | 10 |
-| Inventuurivasteta ridu | 12 |
-| Võimaliku ülevaru ridu | 730 |
-| Vähemalt 10x üle tellimispunkti | 214 |
-| Vähemalt 100x üle tellimispunkti | 31 |
-| Suurim ülevaru kordaja | 628.60x |
-
-## 4. Müügitulemuste koond
+## 2. Müügianalüüs kategooriate kaupa
 
 | Kategooria | Tooteid | Müüke | Kogumüük |
 |---|---:|---:|---:|
@@ -37,20 +24,43 @@ Minu roll oli kasutada `LEFT JOIN` loogikat, et siduda tootekataloog müügi- ja
 | aksessuaarid | 67 | 1 772 | 393 035.82 |
 | laste_riided | 70 | 2 027 | 305 844.45 |
 
-**Järeldus:** suurima kogumüügi annab `jalanõusid`, kuid enim müügiridu on kategoorias `meeste_riided`. See eristus on oluline, sest tehingute arv ja müügiväärtus ei näita alati sama pilti.
+## 3. TOP 10 toodet kogumüügi järgi
 
-## 5. Inventuuri staatused
+| Koht | Toode | Kategooria | Alamkategooria | Müüdud kordi | Kogumüük |
+|---:|---|---|---|---:|---:|
+| 1 | Õhuline sünteetiline sporditossud | jalanõusid | tossud | 35 | 27 347.04 |
+| 2 | Trendikas goretex oxfordid | jalanõusid | kingad | 32 | 23 376.15 |
+| 3 | Praktiline viskoosne jakk | naiste_riided | jakid | 35 | 22 188.80 |
+| 4 | Praktiline džersii seelik | naiste_riided | seelikud | 37 | 22 039.98 |
+| 5 | Boheemlaslik puuvillane tuulejope | naiste_riided | jakid | 30 | 21 309.96 |
+| 6 | Õhuline sünteetiline kõrge kontsaga kingad | jalanõusid | kontsad | 38 | 21 295.56 |
+| 7 | Praktiline kangast kõrge kontsaga kingad | jalanõusid | kontsad | 37 | 21 118.68 |
+| 8 | Luksuslik villane pahkluu saapad | jalanõusid | botased | 28 | 19 704.87 |
+| 9 | Praktiline merino villane parka | meeste_riided | jakid | 30 | 19 620.45 |
+| 10 | Õhuline linane jakk | naiste_riided | jakid | 41 | 19 393.29 |
 
-| Staatus | Ridu | Tõlgendus |
-|---|---:|---|
-| `VÕIMALIK ÜLEVARU` | 730 | Laoseis on vähemalt 3 korda suurem kui tellimispunkt |
-| `OK` | 439 | Laoseis ei ole madal, negatiivne, puuduv ega ülevaru kontrolli järgi ekstreemne |
-| `TELLI JUURDE` | 221 | Laoseis on tellimispunktist madalam või sellega võrdne |
-| `INVENTUUR PUUDUB` | 12 | Tootel puudub inventuurivaste |
-| `KONTROLLI LAOSEISU` | 10 | Laoseis on negatiivne |
-| **Kokku** | **1 412** | Toote-asukoha taseme inventuuriandmed |
+## 4. Inventuuri staatused kategooriate kaupa
 
-**Järeldus:** inventuuri ei tohiks vaadata ainult `TELLI JUURDE / OK` loogikas. Negatiivsed laoseisud, inventuurivasteta tooted ja võimalik ülevaru vajavad eraldi käsitlemist.
+| Kategooria | Inventuur puudub | Kontrolli laoseisu | OK | Telli juurde | Võimalik ülevaru | Kokku |
+|---|---:|---:|---:|---:|---:|---:|
+| meeste_riided | 1 | 2 | 102 | 56 | 164 | 325 |
+| jalanõusid | 2 | 0 | 90 | 48 | 146 | 286 |
+| laste_riided | 2 | 2 | 77 | 46 | 147 | 274 |
+| naiste_riided | 2 | 4 | 86 | 31 | 151 | 274 |
+| aksessuaarid | 5 | 2 | 84 | 40 | 122 | 253 |
+| **Kokku** | **12** | **10** | **439** | **221** | **730** | **1 412** |
+
+## 5. Ülevaru kontrolli koond
+
+| Näitaja | Tulemus |
+|---|---:|
+| Võimaliku ülevaru ridu | 730 |
+| Erinevaid tootenimesid | 331 |
+| Ridu kordajaga vähemalt 5x | 455 |
+| Ridu kordajaga vähemalt 10x | 214 |
+| Ridu kordajaga vähemalt 20x | 79 |
+| Ridu kordajaga vähemalt 100x | 31 |
+| Suurim kordaja | 628.60x |
 
 ## 6. Võimalik ülevaru kategooriate kaupa
 
@@ -62,31 +72,28 @@ Minu roll oli kasutada `LEFT JOIN` loogikat, et siduda tootekataloog müügi- ja
 | jalanõusid | 146 | 65 | 78 921 | 75 397 | 628.60 |
 | aksessuaarid | 122 | 58 | 43 984 | 40 869 | 231.53 |
 
-**Järeldus:** ülevaru risk ei paikne ainult ühes kategoorias. Kõigis põhikategooriates on ridu, kus laoseis on tellimispunktiga võrreldes väga suur.
+## 7. TOP 10 kõige suurema ülevaru kordajaga rida
 
-## 7. Suurim üllatus
+| Koht | Toode | Kategooria | Asukoht | Laoseis | Tellimispunkt | Üle tellimispunkti | Kordaja |
+|---:|---|---|---|---:|---:|---:|---:|
+| 1 | Minimalistlik sünteetiline saapad | jalanõusid | ladu | 9 429 | 15 | 9 414 | 628.60 |
+| 2 | Õhuline sünteetiline rannasandaalid | jalanõusid | tartu | 9 479 | 17 | 9 462 | 557.59 |
+| 3 | Trendikas džersii slim-fit püksid | meeste_riided | ladu | 8 968 | 17 | 8 951 | 527.53 |
+| 4 | Stiilne džersii püksid | meeste_riided | ladu | 5 321 | 11 | 5 310 | 483.73 |
+| 5 | Soe satiinne pluus | naiste_riided | ladu | 7 626 | 17 | 7 609 | 448.59 |
+| 6 | Mugav tweed kardigan | meeste_riided | ladu | 7 029 | 16 | 7 013 | 439.31 |
+| 7 | Boheemlaslik goretex kingad | jalanõusid | pärnu | 7 588 | 21 | 7 567 | 361.33 |
+| 8 | Kerge satiinne jakk | naiste_riided | tartu | 9 985 | 39 | 9 946 | 256.03 |
+| 9 | Õhuline sünteetiline kõrge kontsaga kingad | jalanõusid | tallinn | 6 821 | 27 | 6 794 | 252.63 |
+| 10 | Luksuslik villane bleiser | laste_riided | pärnu | 7 372 | 31 | 7 341 | 237.81 |
 
-Suurim üllatus oli ülevaru ulatus. Enne inventuuri täpsustatud kontrolli oleks võinud arvata, et põhiküsimus on juurde tellimises. Tegelikult näitas analüüs, et andmetes on ka väga suuri laoseise, mis võivad siduda kapitali ja viidata aeglasele käibele, hooajalisusele või andmeprobleemile.
+## 8. Tõlgendus
 
-## 8. Soovitus Toomasele
+Inventuuri tulemust ei tohiks tõlgendada automaatse tellimisnimekirjana. Enne otsuseid tuleb eraldi kontrollida:
 
-Toomas peaks jagama inventuuri kontrolli neljaks eraldi töövooguks:
+- negatiivsed laoseisud;
+- inventuurivasteta tooted;
+- madala laoseisuga read;
+- võimaliku ülevaru read;
+- toote aktiivsus, hooajalisus ja müügikiirus.
 
-1. **Andmekvaliteet:** negatiivsed laoseisud ja inventuurivasteta tooted.
-2. **Puudujääk:** `TELLI JUURDE` read, eriti tugeva müügiga kategooriates.
-3. **Ülevaru:** read, kus laoseis on vähemalt 3 korda üle tellimispunkti, eraldi kontrolliga 10x ja 100x juhtumitele.
-4. **Sortiment:** müümata tooted ja võimalikud fantoomtooted.
-
-## 9. Soovitus Annale
-
-Anna peaks sortimendi juhtimisel eristama:
-
-- müümata tooted, mida ei tohiks enne ärilist kontrolli kustutada;
-- tugeva müügiga kategooriad, eriti `jalanõusid` ja `meeste_riided`;
-- kõrge laoseisuga tooted, mille müügikiirus ja hooajalisus vajavad kontrolli.
-
-## 10. Lühike kõnetekst esitluseks
-
-Minu analüüs ühendas tooted müügi- ja inventuuriandmetega. `LEFT JOIN` abil leidsin 12 toodet, mida müügitabelis ei esine. Müügi poolelt andsid suurima kogumüügi jalanõud, samas kui meeste riietel oli kõige rohkem müügiridu.
-
-Inventuuri poolelt oli kõige olulisem leid see, et probleem ei ole ainult juurde tellimises. Lisaks 221 `TELLI JUURDE` reale tuli välja 10 negatiivset laoseisu, 12 inventuurivasteta rida ja 730 võimalikku ülevaru rida. See tähendab, et UrbanStyle peaks enne automaatseid tellimisotsuseid kontrollima nii andmekvaliteeti kui ka võimalikke ülevaru juhtumeid.
