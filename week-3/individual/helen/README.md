@@ -269,8 +269,6 @@ Analüüsi täpsustamiseks oleks vaja järgmisi andmeid:
 
 ## Failid
 
-- ['Supabase Link'](https://supabase.com/dashboard/project/xwmwqxqorsiauliaynkk/sql/91fc2c15-c0ef-4ce2-956f-54b0f7269cd3)
-
 - `W3_GT_C_HT_Tooted + Inventuur (LEFT JOIN).sql` — SQL päringud toodete, müügi ja inventuuri analüüsiks. [Link](https://github.com/Kolju3/DACA-group/blob/main/week-3/individual/helen/W3_GT_C_HT_Tooted%20%2B%20Inventuur%20(LEFT%20JOIN).sql)
 - `1. LEFT JOIN_ tooted, mida pole kunagi müüdud.png` — müümata toodete päringu tulemus.[Link](https://github.com/Kolju3/DACA-group/blob/main/week-3/individual/helen/kuvat%C3%B5mmised/1.%20LEFT%20JOIN_%20tooted%2C%20mida%20pole%20kunagi%20m%C3%BC%C3%BCdud.png)
 - `2. Müümata toodete arv.png` — müümata toodete arvu kontroll.[Link](https://github.com/Kolju3/DACA-group/blob/main/week-3/individual/helen/kuvat%C3%B5mmised/2.%20M%C3%BC%C3%BCmata%20toodete%20arv.png)
@@ -278,14 +276,10 @@ Analüüsi täpsustamiseks oleks vaja järgmisi andmeid:
 - `4. Müügianalüüs kategooriate kaupa.png` — kategooriate müügianalüüs.[Link](https://github.com/Kolju3/DACA-group/blob/main/week-3/individual/helen/kuvat%C3%B5mmised/4.%20M%C3%BC%C3%BCgianal%C3%BC%C3%BCs%20kategooriate%20kaupa.png)
 - `5.1 Inventuuri soovitused.png` — esialgse inventuuripäringu tulemus.[Link](https://github.com/Kolju3/DACA-group/blob/main/week-3/individual/helen/kuvat%C3%B5mmised/5.1.%20Inventuuri%20soovitused.png)
 - `5.1. Inventuuri soovitused.md` — esialgne inventuuri detailtabel.[Link](https://github.com/Kolju3/DACA-group/blob/main/week-3/individual/helen/kuvat%C3%B5mmised/5.1%20Inventuuri%20soovitused.md)
-- - `5.1 Inventuuri soovitused_täpsustatud.png` — täpsustatud inventuuripäringu tulemus.[Link](https://github.com/Kolju3/DACA-group/blob/main/week-3/individual/helen/kuvat%C3%B5mmised/5.2.%20Invetuuri%20soovitused_t%C3%A4psustatud.md)
-- `5.2. Invetuuri soovitused_täpsustatud.md` — täpsustatud inventuuri staatuste tabel.[Link](https://github.com/Kolju3/DACA-group/blob/main/week-3/individual/helen/kuvat%C3%B5mmised/5.%202.Inventuuri%20soovitused_t%C3%A4psustatud.png)
+- `5.2 Inventuuri soovitused_täpsustatud.png` — täpsustatud inventuuripäringu tulemus.[Link](https://github.com/Kolju3/DACA-group/blob/main/week-3/individual/helen/kuvat%C3%B5mmised/5.%202.Inventuuri%20soovitused_t%C3%A4psustatud.png)
+- `5.2. Inventuuri soovitused_täpsustatud.md` — täpsustatud inventuuri staatuste tabel.[Link](https://github.com/Kolju3/DACA-group/blob/main/week-3/individual/helen/kuvat%C3%B5mmised/5.2.%20Invetuuri%20soovitused_t%C3%A4psustatud.md)
 - `6A. Ülevaru kontroll_laoseis oluliselt üle tellimispunkti.md` — ülevaru kontrolli detailtabel.[Link](https://github.com/Kolju3/DACA-group/blob/main/week-3/individual/helen/kuvat%C3%B5mmised/6A.%20%C3%9Clevaru%20kontroll_laoseis%20oluliselt%20%C3%BCle%20tellimispunkti.md)
 
 ## Kokkuvõte
 
 Toote- ja inventuuriandmed annavad UrbanStyle’ile hea aluse sortimendi ja varude juhtimiseks, kuid enne otsuste tegemist tuleb korrastada andmekvaliteedi ja varude planeerimise probleemid. Müügianalüüs näitab tugevaid kategooriaid, eriti jalanõusid ja meeste riideid, kuid inventuurianalüüs näitab, et osa laoseisudest on negatiivsed või inventuurivasteta ning suur osa ridu on võimalikud ülevaru juhtumid. Seetõttu peaks järgmine samm olema varude ja andmekvaliteedi kontroll, mitte automaatne tellimisotsus
-
-
-Toote- ja inventuuriandmed annavad UrbanStyle’ile hea aluse sortimendi ja varude juhtimiseks, kuid enne otsuste tegemist tuleb korrastada andmekvaliteedi probleemid. Müügianalüüs näitab tugevaid kategooriaid, eriti jalanõusid ja meeste riideid, kuid inventuurianalüüs näitab, et osa laoseisudest on negatiivsed või inventuurivasteta. Seetõttu peaks järgmine samm olema andmekvaliteedi kontroll, mitte automaatne tellimisotsus.
-
