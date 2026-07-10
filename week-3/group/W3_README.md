@@ -261,7 +261,7 @@ Analüüsi tõlgendamisel tuleb arvestada järgmiste piirangutega:
 
 ## Failid
 
-- [W3 Presentatsioon](https://github.com/Kolju3/DACA-group/blob/main/week-3/group/UrbanStyle_Strategic_Intelligence.pptx)
+- [W3 Presentatsioon](https://github.com/Kolju3/DACA-group/blob/main/week-3/group/UrbanStyle_Op_JOIN-anal%C3%BC%C3%BCs.pptx)
 - [Roll A](https://github.com/Kolju3/DACA-group/tree/main/week-2/individual/natalia)
 - [Roll B](https://github.com/Kolju3/DACA-group/tree/main/week-2/individual/olga)
 - [Roll C](https://github.com/Kolju3/DACA-group/tree/main/week-2/individual/helen)
