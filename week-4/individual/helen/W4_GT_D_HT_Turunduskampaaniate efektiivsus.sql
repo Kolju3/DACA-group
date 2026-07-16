@@ -69,6 +69,7 @@ ORDER BY kogukaive DESC;                               -- Tulemused sorteeritaks
 WITH kanali_kogumüük AS (
     SELECT
         COALESCE(w.source, 'Tundmatu / kanal puudub') AS turunduskanal,
+        COUNT(DISTINCT o.sale_id) AS tellimusi,
         ROUND(SUM(o.total_price), 2) AS kogukaive
     FROM sales o
     INNER JOIN customers c      
@@ -91,7 +92,7 @@ kanali_kliendid AS (
 )
 SELECT
     km.turunduskanal, kk.kliente, km.tellimusi, km.kogukaive,
-    ROUND (km.kogukäive / NULLIF(kk.kliente, 0), 2 ) AS müük_kliendi_kohta
+    ROUND (km.kogukaive / NULLIF(kk.kliente, 0), 2 ) AS müük_kliendi_kohta
 FROM kanali_kogumüük km
 INNER JOIN kanali_kliendid kk   
  ON km.turunduskanal = kk.turunduskanal
