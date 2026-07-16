@@ -1,4 +1,4 @@
-/*
+
 ================================================================================
 🚀 NÄDAL 4 – NATALIA INDIVIDUAALNE TÖÖ: KLIENDIGRUPPIDE ANALÜÜS (ROLL B)
 ================================================================================
@@ -31,6 +31,17 @@ turundustegevusi nende ostusageduse tõstmiseks. Kõige suurem hulk kliente (142
 kuulub aga 'Uus' segmenti, mis viitab heale uute klientide pealevoolule, kuid
 nõuab kohest automatiseeritud kordusostude kampaaniat, et hoida ära nende
 eemaldumist brändist."
+
+SOovitused ABC analüüsi põhjal:
+
+1. A-Klass (VIP): Maksimaalne tähelepanu ja käsitöö
+Kuna vaid 18 inimest teevad kolmandiku käibest, peab nende hoidmine olema personaalne. Neile ei saadeta tavalisi mass-uudiskirju, vaid tehakse personaalseid pakkumisi.
+
+2. B-Klass (Regular): Ristmüük ja stimuleerimine
+See grupp on üllatavalt tugev (42,7% käibest!). Siin tasub analüüsida, mis neil puudu on, et saada VIP-iks. Kas saab neile müüa lisatooteid (aksessuaare jalanõude juurde) või tõsta ostusagedust?
+
+3. C-Klass (Uued): Automatiseerimine
+Kuna neid on 142, kuluks nende peale käsitsi aega ja energiat liiga palju. ABC-analüüsi reegel ütleb: C-klassiga tegelemine peab olema 100% automatiseeritud (iseteenindus, automaatsed tervitus-emailid), et hoida tegevuskulud madalad.
 
 🔗 PROJEKTIFAILID JA TÕENDUSMATERJAL
 
