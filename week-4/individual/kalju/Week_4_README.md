@@ -1,4 +1,4 @@
-# Nädal 2 – kalju individuaalne töö
+# Nädal 4 – kalju individuaalne töö
 
 UrbanStyle müügi ja kliendijaotuse dünaamiline analüüs
 Autor: Analüütik
