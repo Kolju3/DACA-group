@@ -1,199 +1,152 @@
-# Nädal 4 – SQL agregatsioon: grupi koondülevaade
+# Nädal 4 – SQL agregatsioon: grupi koondtöö
 
 **Meeskond:** Operations Intelligence  
 **Projekt:** UrbanStyle.ltd andmeanalüüsi simulatsioon  
-**Nädal:** 4  
-**Teema:** SQL agregatsioon – `GROUP BY`, agregaatfunktsioonid, `HAVING`, CTE-d ja window function'id  
+**Teema:** SQL agregatsioon  
 **Keskkond:** Supabase / PostgreSQL  
-
----
 
 ## Ülesande eesmärk
 
-Nädal 4 eesmärk oli muuta üksikud müügi-, kliendi-, toote-, varude- ja turundusread juhtimisotsusteks kasutatavateks koondnäitajateks.
+Nädal 4 eesmärk oli muuta müügi-, kliendi-, toote-, inventuuri- ja turundusandmed juhtkonnale kasutatavateks koondnäitajateks.
 
-UrbanStyle’i juhtkonna vaatest oli äriküsimus järgmine: **millised müügi-, kliendi-, toote- ja turundusmustrid peaksid Kristi Tammel olema juhatuse koosolekul nähtavad?**
+UrbanStyle’i tegevjuht Kristi Tamm vajab juhatuse koosolekuks vastuseid järgmistele küsimustele:
 
-Grupitöö fookus oli:
+- kuidas muutus müük ajas;
+- millised kliendigrupid loovad enim väärtust;
+- millised tootekategooriad vajavad juhtimisotsust;
+- millised turunduskanalid seostuvad suurima müügimahuga;
+- milliseid numbreid saab andmekvaliteedi piiranguid arvestades usaldada.
 
-- koondada müük ajas, asukohtade ja kategooriate lõikes;
-- segmenteerida kliendid väärtuse järgi;
-- hinnata tootekategooriate müüki ja hinnataset;
-- analüüsida turunduskanalite mõju müügile;
-- kontrollida, millised piirangud mõjutavad tulemuste tõlgendamist.
+Töös kasutati `GROUP BY`, agregaatfunktsioone, `HAVING`-filtrit, CTE-sid ning window function’e.
 
----
+## Meeskonna rollid
 
-## Kasutatud SQL-võtted
-
-| Võte | Kasutus grupitöös |
-|---|---|
-| `GROUP BY` | Kuude, kanalite, kategooriate, segmentide ja asukohtade koondamiseks |
-| `COUNT()` | Tellimuste, klientide, toodete ja ridade loendamiseks |
-| `COUNT(DISTINCT ...)` | Unikaalsete klientide ja toodete arvu leidmiseks |
-| `SUM()` | Kogukäibe ja müüdud koguste arvutamiseks |
-| `AVG()` | Keskmise tellimusväärtuse, keskmise käibe ja keskmise hinna arvutamiseks |
-| `MIN()` / `MAX()` | Hinnavahemike ja kontrollväärtuste leidmiseks |
-| `HAVING` | Grupeeritud tulemuste filtreerimiseks |
-| CTE / `WITH` | Mitmeastmeliste koondpäringute loetavamaks muutmiseks |
-| Window functions | Trendide, järjestuste ja kategooriasiseste positsioonide arvutamiseks |
-
----
-
-## Rollid ja individuaalsed panused
-
-| Roll | Vastutaja | Fookus | Peamine väljund |
+| Roll | Vastutaja | Analüüsidomeen | Individuaalne töö |
 |---|---|---|---|
-| Müügi ja kategooriate dünaamiline analüüs | Kalju | Müügitrendid, asukohad, kategooriad, sesoonsus | Ajalised ja kategooriapõhised müügikoondid |
-| Kliendigruppide analüüs | Natalia | VIP / Regular / Uus segmendid | Kliendisegmentide koondtabel ja soovitused |
-| Tootekategooriate ja varude analüüs | Olga | Kategooriate hinnad, müügikogused ja laovaru prioriteedid | Kategooriapõhine tootemüügi ja hinna ülevaade |
-| Turunduskampaaniate efektiivsus | Helen | Turunduskanalid, käive, tellimused, attribution-piirangud | Valideeritud kanalipõhine turundusanalüüs |
+| A | Kalju | Müügi koondandmed ja trendid | [Roll A kaust](../individual/kalju/) |
+| B | Natalia | Kliendigruppide analüüs | [Roll B kaust](../individual/natalia/) |
+| C | Olga | Tootekategooriad ja inventuuristatistika | [Roll C kaust](../individual/olga/) |
+| D | Helen | Turunduskanalite efektiivsus ja täiendav QA | [Roll D kaust](../individual/helen/) |
 
----
+## Kristile: TOP 5 koondnumbrit
 
-## Peamised koondleiud
+| Domeen | Koondnumber | Juhtimistähendus | Staatus |
+|---|---:|---|---|
+| Kogu UrbanStyle | **10 118 müügitehingut ja 2 909 177,98 € käivet** | Kontrollväärtus, mille vastu võrreldi liidetud ja agregeeritud tulemusi | Valideeritud |
+| Müük | **2024 käive 1 470 358,02 €; kasv 2023. aastaga võrreldes 19,08%** | 2024 oli tugevam aasta, kuid hilisemate perioodide andmekate vajab kontrolli | Valideeritud `sales` koondiga |
+| Kliendid | **18 VIP-klienti; keskmine käive 745,20 €** | Väikest kõrge väärtusega gruppi tasub hoida personaalse lojaalsustegevusega | Roll B esitatud; populatsioon vajab ristkontrolli |
+| Tooted | **`meeste_riided`: 4 121 müüdud ühikut** | Suurima müügikogusega kategooria vajab nõudlusele vastavat varude planeerimist | Roll C esitatud; laoseisu näitaja puudub |
+| Turundus | **`google_organic`: 666 444,98 € käivet ja 2 273 tellimust** | Suurima valideeritud müügimahuga tuvastatud kanal | Valideeritud standardiseeritud kanalitega |
 
-### 1. Müük kasvas 2023–2024 perioodil, kuid 2025 vajab eraldi kontrolli
+## Peamised leiud
 
-Kalju dünaamiline müügianalüüs viitab, et 2023–2024 perioodil kasvas müük ligikaudu **50%**. Kiirema kasvuga kanalitena tõusid esile **online** ja **Tartu**. Suurema käibega tootekategooriatena tulid välja **meeste_riided**, **naiste_riided** ja **jalanõusid**.
+### Müük
 
-Samas näitas analüüs 2025. aasta kohta järsku langust. Seda ei tohiks käsitleda kohe ärilise langusena ilma andmekvaliteedi kontrollita. Võimalik, et tegemist on puuduliku perioodi, mittetäieliku impordi või andmete katkemisega.
+Täieliku `sales` tabeli kontrolli järgi kasvas 2024. aasta käive 2023. aastaga võrreldes **19,08%** ning tellimuste arv **20,19%**. Suurim kuine käive oli 2024. aasta detsembris: **170 623,28 €**.
 
-**Tõlgendus:** 2023–2024 kasv on juhtkonnale positiivne signaal, kuid 2025 langus vajab enne juhatusele esitamist valideerimist.
+Roll A individuaalses kokkuvõttes esitatud ligikaudu 50% kasv ei ole otseselt võrreldav kogu `sales` tabeli aastase kontrolliga, sest kasutatud perioodid, filtrid või võrdlusloogika võivad erineda. Grupi juhtimisnumbrina kasutame kontrollitud aastavõrdlust 19,08%.
 
----
+### Kliendid
 
-### 2. Müügis esineb selge sesoonsus
+Roll B jaotas analüüsitud kliendid kolme gruppi:
 
-Kalju analüüsi järgi on suvekuudel, eriti juuni–august, müük ligikaudu **20% kõrgem**. Samuti ilmnes aastalõpu kampaaniate mõju, kus aasta lõpus tekkis ühekuuline müügikasv.
+| Segment | Kliente | Keskmine käive |
+|---|---:|---:|
+| VIP | 18 | 745,20 € |
+| Regular | 54 | 312,50 € |
+| Uus | 142 | 64,80 € |
 
-**Tõlgendus:** varude, kampaaniate ja personalivajaduse planeerimisel tuleb arvestada suvise nõudluse kasvuga ning aasta lõpu kampaaniate mõjuga.
+Segmentatsioon annab selge tegevusloogika: VIP-klientide hoidmine, Regular-klientide kasvatamine ja uute klientide automatiseeritud järelkommunikatsioon.
 
----
+Kliendisegmentide koguarv 214 ei ole grupi materjalides veel täielikult ristkontrollitud kogu müügiklientide populatsiooni ja kasutatud `HAVING`-filtriga. Seetõttu tuleb segmentide numbreid esitleda Roll B analüüsitud kliendikogumi, mitte kogu UrbanStyle’i kliendibaasina.
 
-### 3. Kliendibaasi väärtus on kontsentreeritud väiksemasse segmenti
+### Tooted ja inventuur
 
-Natalia kliendisegmentide analüüs jaotas kliendid kogukäibe alusel kolmeks:
-
-| Segment | Piirmäär | Klientide arv | Keskmine käive | Äriline fookus |
-|---|---:|---:|---:|---|
-| VIP | üle 500 € | 18 | 745,20 € | Personaalne lojaalsus ja hoidmine |
-| Regular | 150–500 € | 54 | 312,50 € | Ristmüük ja ostusageduse kasvatamine |
-| Uus | alla 150 € | 142 | 64,80 € | Automatiseeritud kordusostu kampaaniad |
-
-**Tõlgendus:** VIP-kliente on vähe, kuid nende väärtus on kõrge. Regular-segment on realistlik kasvukoht. Uusi kliente on kõige rohkem, kuid nad vajavad automatiseeritud järelkommunikatsiooni, et nad ei jääks ühekordseteks ostjateks.
-
----
-
-### 4. Tootekategooriad on müügikoguselt üsna ühtlased, kuid hinnatasemed erinevad
-
-Olga kategooriaanalüüs näitas, et müüdud kogused on kategooriate vahel suhteliselt sarnased: keskmine müüdud kogus toote kohta jäi ligikaudu **1,78–1,84** vahemikku.
-
-Olulisemad kategoorialeiud:
+Roll C tulemuste järgi:
 
 | Kategooria | Tooteid | Keskmine hind | Müüdud kogus |
 |---|---:|---:|---:|
-| meeste_riided | 82 | 189,91 € | 4 121 |
-| jalanõusid | 73 | 214,10 € | 3 737 |
-| laste_riided | 70 | 85,30 € | 3 686 |
-| naiste_riided | 70 | 192,58 € | 3 604 |
-| aksessuaarid | 67 | 125,71 € | 3 231 |
+| `meeste_riided` | 82 | 189,91 € | 4 121 |
+| `jalanõusid` | 73 | 214,10 € | 3 737 |
+| `laste_riided` | 70 | 85,30 € | 3 686 |
+| `naiste_riided` | 70 | 192,58 € | 3 604 |
+| `aksessuaarid` | 67 | 125,71 € | 3 231 |
 
-**Tõlgendus:** meeste_riided annab suurima müügikoguse, jalanõusid on kõrgeima keskmise hinnaga kategooria. Laste_riided on madalama hinnaga, kuid koguseliselt tugev. Varude planeerimisel tuleks prioriteetselt jälgida meeste riideid ja jalanõusid.
+`meeste_riided` oli suurima müügikogusega kategooria ning `jalanõusid` kõrgeima keskmise hinnaga kategooria.
 
----
+Nädala ametlik Roll C ülesanne hõlmas ka laoseisu ja `inventory_movements` andmeid. Avalikus väljundis on tõendatud kategooria-, hinna- ja müügikoguse analüüs, kuid tegelikku laoseisu, ülevaru või juurde tellimise riski ei ole veel kvantifitseeritud. Seetõttu nimetame seda grupi kokkuvõttes tootekategooriate, mitte lõplikuks inventuuririski analüüsiks.
 
-### 5. Turunduskanalite analüüsis oli tugevaim valideeritud kanal `google_organic`
+### Turundus
 
-Helen analüüsis turunduskanalite efektiivsust `sales`, `customers` ja `web_logs` tabelite põhjal. Esialgne otseühendus `customer_id` alusel kordistas müügiridu, sest ühel kliendil võib olla mitu veebikülastust. Lõplikus kontrollitud käsitluses määrati kliendile üks viimane teadaolev kanal.
+Enne analüüsi standardiseeriti 19 algset `source` väärtust 10 kanaliks uues `source_clean` väljas.
 
-Valideeritud tulemuses oli suurima kogukäibega kanal:
+Valideeritud kanalitulemuste järgi:
 
-| Kanal | Kogukäive | Tellimused | Kliendid | Keskmine tellimus |
-|---|---:|---:|---:|---:|
-| google_organic | 582 912,57 € | 1 994 | 624 | 292,33 € |
+| Kanal | Käive | Tellimusi | Keskmine tellimus |
+|---|---:|---:|---:|
+| `google_organic` | 666 444,98 € | 2 273 | 293,20 € |
+| `facebook_ads` | 469 933,25 € | 1 635 | 287,42 € |
+| `direct` | 420 103,22 € | 1 505 | 279,14 € |
+| `email_campaign` | 300 296,85 € | 1 024 | 293,26 € |
+| `instagram` | 262 112,79 € | 877 | 298,87 € |
 
-Lisaks kasvas `google_organic` käive 2024. aasta novembrist detsembrini **13 834,38 eurolt 33 572,86 euroni**, ehk **142,7%**.
+- `google_organic` oli suurima valideeritud käibe ja tellimuste arvuga kanal.
+- `facebook_ads` oli tuvastatud kanalitest suurima müügiga kliendi kohta.
+- `instagram` oli suurima keskmise tellimusväärtusega kanal.
+- tegelikku ROI-d ei saa arvutada, sest kampaaniakulud puuduvad.
 
-**Tõlgendus:** orgaaniline Google’i kanal on tugeva müügipotentsiaaliga. Samas tuleb arvestada, et tegemist on lihtsustatud kliendipõhise omistamisloogikaga, mitte täieliku tehingupõhise attribution-mudeliga.
+## Suurim üllatus
 
----
+Otsene `sales`–`customers`–`web_logs` JOIN andis **34 527 628,19 € käivet**, kuigi `sales` tabeli tegelik kontrollsumma oli **2 909 177,98 €**.
 
-## Olulised metoodilised piirangud
+JOIN:
 
-1. **Turunduse ROI-d ei saa lõplikult arvutada**, sest andmestikus puuduvad kampaaniate kulud.
-2. **`web_logs` tabelis on ühe kliendi kohta mitu külastust**, mistõttu otseühendus müügiga kordistab tulemusi.
-3. **2025. aasta müügilangus vajab andmekvaliteedi kontrolli**, enne kui seda käsitleda ärilise probleemina.
-4. **Tootekategooriate müügikogused näitavad koondpilti**, kuid laoseisu otsusteks on vaja siduda tulemused tegeliku inventory seisuga.
-5. **Kliendisegmentide piirmäärad on analüütilised tööpiirid**, mitte ametlik ärireegel. Need vajavad juhtkonna kinnitust.
+- suurendas ridade arvu 10 118 realt 121 131 reale;
+- ülehindas käivet 11,87 korda;
+- jättis samal ajal `INNER JOIN customers` tõttu välja 988 müüki.
 
----
+See näitas, et tehniliselt töötav päring võib anda äriliselt vale tulemuse. Lõplikus turundusanalüüsis valiti igale kliendile `ROW_NUMBER()` abil üks viimane teadaolev standardiseeritud kanal.
 
-## Soovitused Kristile ja Annale
+## Soovitused Annale ja Kristile
 
-### 1. Keskenduda kasvu näidanud kanalitele ja asukohtadele
+1. **Müük ja kliendid:** hoida VIP-kliente personaalselt ning suunata Regular-segmendile ristmüügi ja ostusageduse kasvatamise tegevused.
+2. **Tooted ja varud:** planeerida eeskätt `meeste_riided` ja `jalanõusid` kategooriate varusid, kuid enne tellimisotsuseid lisada analüüsi tegelik laoseis ja laoliikumised.
+3. **Turundus:** toetada suure mahuga `google_organic` kanalit, kuid võrrelda tasulisi kanaleid alles pärast kampaaniakulude lisamist.
+4. **Andmekvaliteet:** kasutada analüüsis standardiseeritud `source_clean` väärtust ning valideerida kõik JOIN-id algse ridade arvu ja käibe vastu.
+5. **Atribuutika:** siduda kanal tulevikus konkreetse sessiooni või müügitehinguga, mitte kogu kliendi viimase teadaoleva kanaliga.
 
-Online ja Tartu näitasid kiiremat kasvu. Neid tasub käsitleda kui prioriteetseid kasvusuundi, kuid otsus peab põhinema kontrollitud perioodiandmetel.
+## Puuduvad või täiendamist vajavad andmed
 
-### 2. Kontrollida 2025. aasta andmete täielikkust
+- turunduskampaaniate kulud, kampaania ID-d ja UTM-parameetrid;
+- tehingu ja veebisessiooni otsene seos;
+- brutomarginaal ja toote omahind;
+- tegelik laoseis, laoliikumised, tellimispunkt ja tarneaeg;
+- tagastused ja tühistatud tehingud;
+- kliendisegmentatsiooni täielik populatsioon ja filtrite dokumentatsioon;
+- 2025.–2026. aasta andmekatte terviklikkuse kontroll.
 
-Enne 2025. aasta languse juhatusele esitamist tuleb kontrollida, kas kogu aasta või periood on andmetes täielikult kaetud.
+## Kvaliteedikontroll
 
-### 3. Hoida VIP-kliente personaalselt
-
-VIP-segment on väike, kuid kõrge väärtusega. Nende puhul sobivad personaalsed pakkumised ja erikohtlemine, mitte masskampaaniad.
-
-### 4. Suunata Regular-segmenti ristmüüki
-
-Regular-klientide kasvatamine VIP-tasemele on realistlik kasvuhoob. Neile sobivad täiendtoodete ja kategooriapõhised pakkumised.
-
-### 5. Automatiseerida uute klientide järeltegevused
-
-Uusi kliente on palju, kuid nende keskmine käive on madal. Esimese ostu järel tuleks rakendada automatiseeritud tervitus- ja kordusostukampaaniaid.
-
-### 6. Planeerida varusid sesoonsuse ja kategooria väärtuse järgi
-
-Suveperioodi müügitõus ja meeste_riided / jalanõusid kategooriate tugev positsioon viitavad vajadusele planeerida laovarusid enne müügitippe.
-
-### 7. Standardiseerida turunduskanalite nimetused
-
-Sama turunduskanal esineb mitme kirjapildiga. Kanalite nimetuste standardiseerimine parandaks raportite usaldusväärsust ja vähendaks käsitööd.
-
----
-
-## Slaidide genereerimise alus
-
-Selle README põhjal saab hiljem koostada 8–10 slaidiga koondesitluse.
-
-Soovitatav slaidistruktuur:
-
-1. **Nädal 4 eesmärk** – SQL agregatsioon kui toorandmete muutmine juhtimisinfoks
-2. **Metoodika** – GROUP BY, HAVING, CTE ja window functions
-3. **Müügi üldtrend** – 2023–2024 kasv, 2025 kontrollivajadus
-4. **Sesoonsus ja kanalid** – suvine kasv, online ja Tartu
-5. **Kliendisegmendid** – VIP / Regular / Uus
-6. **Tootekategooriad** – müügikogused ja hinnatasemed
-7. **Turunduskanalid** – `google_organic` ja attribution-piirang
-8. **Riskid ja andmekvaliteedi piirangud**
-9. **Soovitused juhtkonnale**
-10. **Järgmised sammud**
-
----
-
-## Failid ja viited
-
-| Kaust / fail | Kirjeldus |
+| Kontroll | Tulemus |
 |---|---|
-| [`../individual/helen/`](../individual/helen/) | Turunduskanalite efektiivsuse analüüs |
-| [`../individual/kalju/`](../individual/kalju/) | Müügi ja kategooriate dünaamiline trendianalüüs |
-| [`../individual/natalia/`](../individual/natalia/) | Kliendigruppide segmentatsioon |
-| [`../individual/olga/`](../individual/olga/) | Tootekategooriate ja varude analüüs |
+| Kõik neli domeeni on koondis esindatud | OK |
+| Kogu müügi kontrollsumma on teada | OK |
+| Turunduse JOIN-i kordistumine on tuvastatud ja parandatud | OK |
+| Turunduskanalite nimetused on standardiseeritud | OK |
+| Roll A kasvunumber on ühtlustatud kogu `sales` aastakoondiga | PARANDATUD |
+| Roll B segmentide populatsioon on kogu kliendibaasiga ristkontrollitud | VAJAB KONTROLLI |
+| Roll C sisaldab ametlikus ülesandes nõutud laoseisu mõõdikuid | OSALISELT |
+| Kampaaniate tegelik ROI on arvutatav | EI – kulud puuduvad |
 
----
+## Grupifailid
 
-## Lühikokkuvõte
+| Fail | Kirjeldus |
+|---|---|
+| [README.md](./README.md) | Grupi koondülevaade ja peamised tulemused |
+| [W4_GROUP_DETAILNE_ANALUUS.md](./W4_GROUP_DETAILNE_ANALUUS.md) | Rollideülene analüüs, ristkontroll ja piirangud |
+| [W4_GROUP_PRESENTATSIOONI_ALUS.md](./W4_GROUP_PRESENTATSIOONI_ALUS.md) | 3-minutilise juhtkonna esitluse alus ja kõneleja märkmed |
 
-Nädal 4 töö näitas, et SQL agregatsioon võimaldab muuta UrbanStyle’i detailsed tehingu-, kliendi-, toote- ja turundusandmed juhtimisotsusteks kasutatavaks koondinfoks. Peamine äriline pilt on positiivne: 2023–2024 müük kasvas, online ja Tartu on tugevad kasvusuunad, VIP-kliendid on kõrge väärtusega ning meeste_riided ja jalanõusid on varude planeerimisel prioriteetsed kategooriad.
+## Peamine õppetund
 
-Samas vajavad enne lõplikku juhtimisotsust kontrolli kolm teemat: 2025. aasta müügilanguse andmekvaliteet, turunduskanalite attribution-loogika ning kampaaniakulude puudumine ROI arvutamiseks.
+**Agregatsioon annab juhtimisinfo alles siis, kui grupid, filtrid, JOIN-i detailsusaste ja kontrollsummad on enne järelduste tegemist üheselt määratletud.**
 
