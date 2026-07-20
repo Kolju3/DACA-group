@@ -9,8 +9,7 @@ Analüüsi tootekategooriaid, laoseisu ja müüdud vs laos suhteid. Kasuta GROUP
 Analüüsi põhjal on kõige suurema müügimahuga kategooria meeste_riided, kus müüdi kokku 4121 toodet. Kõige kõrgema keskmise hinnaga kategooria on jalanõusid (214,10 €), mis viitab sellele, et selles kategoorias müüakse kallimaid tooteid. Samal ajal on laste_riided madalaima keskmise hinnaga kategooria (85,30 €), kuid selle müügimaht on siiski väga hea, mis näitab stabiilset nõudlust. Kategooriate keskmine müüdud kogus toote kohta jääb vahemikku 1,78–1,84, mis tähendab, et müük on eri kategooriates üsna ühtlane. Annale soovitan hoida piisavat laovaru meeste riiete ja jalanõude kategooriates, sest nende müügimaht ja toodete väärtus on kõrged, ning jälgida regulaarselt kallimate toodete laoseisu, et vältida populaarsete toodete otsalõppemist.
 
 ## SQL päringud / failid
-
-https://supabase.com/dashboard/project/xwmwqxqorsiauliaynkk/sql/de596388-f3c9-4556-898d-828530cab064
+https://supabase.com/dashboard/project/jrkmbzgrdxffhdmbtvey/sql/7988daa9-8e36-48fc-8487-457ed7ee6b7c
 
 SELECT      p.category,      COUNT(DISTINCT p.product_id) AS tooteid,      ROUND(AVG(p.retail_price), 2) 
 AS keskmine_hind,      MIN(p.retail_price) 
