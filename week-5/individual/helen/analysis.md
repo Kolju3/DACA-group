@@ -115,7 +115,7 @@ UrbanStyle’i 2024. aasta müügitulu kasvas 2023. aastaga võrreldes 235 599,1
 | Detsember | 129 104,59 € | 170 623,28 € | 32,2% |
 | **Kokku** | **1 234 758,90 €** | **1 470 358,02 €** | **19,1%** |
 
-2024. aasta müügitulu ületas 2023. aasta taset kõigil kuudel. Suurim protsentuaalne erinevus oli oktoobris ja detsembris, kuid CEO vaate põhijäreldus põhineb kogu aasta kasvul, mitte üksikul kuul.
+2024\. aasta müügitulu ületas 2023. aasta taset kõigil kuudel. Suurim protsentuaalne erinevus oli oktoobris ja detsembris, kuid CEO vaate põhijäreldus põhineb kogu aasta kasvul, mitte üksikul kuul.
 
 ## 6. Linnade aastavõrdlus
 
@@ -158,8 +158,8 @@ Dashboard’i ülesehitus järgib visuaalset hierarhiat:
 
 Olulisemad disainiotsused:
 
-- 2024. aasta joon kasutab UrbanStyle’i teal-värvi `#009B8D`;
-- 2023. aasta on neutraalne hall võrdlusbaas;
+- 2024\. aasta joon kasutab UrbanStyle’i teal-värvi `#009B8D`;
+- 2023\. aasta on neutraalne hall võrdlusbaas;
 - legend asendati joonte lõpus olevate otsesiltidega;
 - eemaldati üleliigsed dekoratiivsed elemendid;
 - kogu vaade mahub ühele ekraanile;
@@ -169,7 +169,7 @@ Olulisemad disainiotsused:
 
 Linna slicer võimaldab valida ühe linna ning filtreerib:
 
-- 2024. aasta müügitulu KPI-d;
+- 2024\. aasta müügitulu KPI-d;
 - ostnud klientide arvu;
 - käibekasvu;
 - mõlema aasta kuist trendi.
@@ -180,10 +180,10 @@ Dashboard’i all olev **„Aasta põhisõnum”** kirjeldab kogu ettevõtte tul
 
 Töö käigus kontrollisin:
 
-- 2023. ja 2024. aasta kogusummade vastavust kuude summale;
+- 2023\. ja 2024. aasta kogusummade vastavust kuude summale;
 - kasvuprotsendi arvutusloogikat;
 - kuude kronoloogilist järjestust;
-- 2025. ja 2026. aasta välistamist põhivõrdlusest, sest need ei ole võrreldavad täisaastad;
+- 2025\. ja 2026. aasta välistamist põhivõrdlusest, sest need ei ole võrreldavad täisaastad;
 - linnasliceri mõju KPI-dele ja joondiagrammile;
 - tühja linnaväärtuse mõju kogukäibele.
 
@@ -192,8 +192,8 @@ Töö käigus kontrollisin:
 - Ligikaudu 10,2% 2024. aasta müügitulust on seotud määramata linnaga.
 - Dashboard näitab, et käive kasvas, kuid ei selgita täielikult, kas kasvu vedas klientide arvu, ostusageduse või keskmise ostukorvi muutus.
 - Ostnud klientide arv on esitatud ainult 2024. aasta kohta; kliendibaasi aastase kasvu hindamiseks tuleks võrrelda ka 2023. aasta näitajat.
-- Staatiline aasta põhisõnum ei muutu koos linnasliceriga.
-- 2025. ja 2026. aasta osalisi perioode ei kasutatud täisaastate võrdluses.
+- Staatiline aasta põhisõnum ei muutu koos linna-sliceriga.
+- 2025\. ja 2026. aasta osalisi perioode ei kasutatud täisaastate võrdluses.
 
 ## 11. Järeldus
 
