@@ -166,7 +166,6 @@ Edasine arendus võiks muuta narratiivi dünaamiliseks, lisada tootekategooria j
 
 Minu individuaalne PBIX, kuvatõmmis ja lühike kirjeldus lisati meeskonna W6 reposse ning ühendati `main` harusse PR-iga **“Add week 6 Helen role B dashboard”**. Grupi repo commit on `6a1e5c6`. Grupi repo materjal on eraldi meeskonnatöö väljund ega asenda isikliku portfoolio dokumentatsiooni.
 
-- [Minu W6 väljund grupirepos](https://github.com/Kolju3/DACA-group/tree/main/week-6/individual/helen)
 
 ## 13. Artefaktid
 
