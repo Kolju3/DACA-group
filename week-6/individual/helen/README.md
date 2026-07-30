@@ -39,5 +39,4 @@ AI-d kasutasin õppematerjalide ja nõuete mõtestamisel, DAX-mõõdikute ning P
 - [Power BI dashboard](urbanstyle_week6_tartu_dashboard_helen.pbix)
 - [Detailne analüüs](analysis.md)
 - [Dashboard'i kuvatõmmis](screenshots/w6_role_b_tartu_kaupluse_dashboard.png)
-- [Minu väljund meeskonna W6 repos](https://github.com/Kolju3/DACA-group/tree/main/week-6/individual/helen)
 
