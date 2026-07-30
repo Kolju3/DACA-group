@@ -1,10 +1,11 @@
 # Nädal 6 – olga individuaalne töö
 
 ## Ülesanne
-_Täienda ise_
+ROLL A: Tallinna kaupluse dashboard + narratiiv
 
 ## Mida tegin
-- _Lisa siia_
+Loo Tallinna kaupluse interaktiivne dashboard koos andmelooga. Tallinn on UrbanStyle'i peakontor ja suurim kauplus — siin peab olema näha tugevused JA kasvuvõimalused.
+
 
 ## SQL päringud / failid
-_Lisa lingid_
+<img width="1189" height="670" alt="week6_roll_a_tlnpood" src="https://github.com/user-attachments/assets/e439106f-5156-4b9d-b741-3ba25ab0a038" />
