@@ -24,19 +24,19 @@ The dashboard was designed to give investors a real‑time overview of UrbanStyl
 The dashboard reveals several important patterns about UrbanStyle’s business in Pärnu:
 
 1. **Pärnu is a strongly summer‑focused location.**  
-   The top 3 revenue months are **July, August, and September**. There is no significant year‑end sales spike.
+   The top 3 revenue months are **August, September and Oktober**. There is no significant year‑end sales spike.
 
 2. **Seasonal product dominance.**  
-   Four out of the top five products contain the word *"Õhuline"* (Airy), which clearly indicates summer‑oriented merchandise.
+   Three out of the top five products contain the word *"Õhuline"* (Airy), which clearly indicates summer‑oriented merchandise.
 
 3. **Year‑over‑year growth with one warning sign.**  
-   Compared to 2023, the 2024 KPIs grew between **8.7% and 13.6%** – except for the **average order value**, which **dropped by 3.8%**. This merits further investigation.
+   Compared to 2023, the 2024 KPIs grew between **3.5% and 11.6%** – except for the **average order value**, which **dropped by 5.1%**. This merits further investigation into priceing.
 
 4. **End‑of‑year campaigns had little impact.**  
    Promotions in November and December did not generate the expected uplift, confirming that the business is strongly seasonal.
 
 5. **Local customers are a minority.**  
-   Only **15% of revenue** comes from local buyers – the vast majority are tourists.
+   Only **14% of revenue** comes from local buyers – the vast majority are tourists.
 
 **Conclusion:** Pärnu is a summer‑driven market. Marketing efforts and inventory should focus on the peak season, while year‑end campaigns may be deprioritised. Given the high share of tourist customers, there is a clear opportunity to **consider raising prices** without significantly hurting demand.
 
@@ -66,6 +66,9 @@ To make the dashboard more insightful and maintainable, I added several enhancem
 
 5. **Brokedown Code into Logical Modules**  
    - Each file now has a single responsibility, making the code far more readable, testable, and maintainable.
+
+6. **Fixed Filtering logic**  
+   - Previously filters left out sales with customer unknown.
 
 ---
 
