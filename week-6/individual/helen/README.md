@@ -8,7 +8,7 @@ Minu ametlik roll grupitöös oli **Roll B — Tartu kaupluse dashboard ja narra
 
 ## Peamised tulemused
 
-- 2024. aasta müügitulu oli **260 044,23 eurot**, mis oli **13,4%** rohkem kui 2023. aastal.
+- 2024\. aasta müügitulu oli **260 044,23 eurot**, mis oli **13,4%** rohkem kui 2023. aastal.
 - Tellimuste arv kasvas **16,5%**, kuid keskmine tellimus vähenes **2,6%**.
 - Suurim kuine langus oli aprillis (**−30,9%**) ja tugevaim kasv mais (**+96,9%**).
 - TOP 5 toodete diagrammil saab vaadata toodete kuuluvust alamkategooria ja kategooria tasemel.
