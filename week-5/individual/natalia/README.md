@@ -13,32 +13,6 @@
 
 ---
 
-## 🛠️ Teostus ja DAX Mõõdikud:
-* **Müügikoht (Asukoha andmete puhastamine Online-kanali jaoks)
-
-*Müügikoht = 
-IF(
-    ISBLANK('public sales'[store_location]) || 'public sales'[store_location] = "", 
-    "Online", 
-    'public sales'[store_location]
-)
-
-* **Lao Ostuväärtus (KPI)
-
-*Lao Ostuväärtus = 
-SUMX(
-    'public products',
-    'public products'[cost_price] * CALCULATE(SUM('public inventory'[quantity_available]))
-)
-
-* **Lao Müügiväärtus (KPI)
-* Lao Müügiväärtus = 
-SUMX(
-    'public inventory', 
-    'public inventory'[quantity_available] * RELATED('public products'[retail_price])
-
-)
-
 📊 Dashboardi Arhitektuur ja Disainipõhimõtted
 1. KPI Peamõõdikud (Ülemine riba)
 Kogus laos kokku: 377K ühikut (Sum of quantity_available)
@@ -69,3 +43,31 @@ Logistiline ümberjaotamine: Kuna Tallinn ja Online toovad 72% müügist, tuleks
 [x] Kauplused ja kategooriad on selgelt eristatavad
 
 [x] Liis saab aru, kus on "punased lipud" (kriitiline ülevaru pealaos)
+
+--
+
+## 🛠️ Teostus ja DAX Mõõdikud:
+* **Müügikoht (Asukoha andmete puhastamine Online-kanali jaoks)
+
+*Müügikoht = 
+IF(
+    ISBLANK('public sales'[store_location]) || 'public sales'[store_location] = "", 
+    "Online", 
+    'public sales'[store_location]
+)
+
+* **Lao Ostuväärtus (KPI)
+
+*Lao Ostuväärtus = 
+SUMX(
+    'public products',
+    'public products'[cost_price] * CALCULATE(SUM('public inventory'[quantity_available]))
+)
+
+* **Lao Müügiväärtus (KPI)
+* Lao Müügiväärtus = 
+SUMX(
+    'public inventory', 
+    'public inventory'[quantity_available] * RELATED('public products'[retail_price])
+
+)
