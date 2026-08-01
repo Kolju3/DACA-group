@@ -1,4 +1,3 @@
-Markdown
 # 📦 ROLL C: Operations Dashboard (Liis'i vaade — Inventuur ja Tarneahea)
 
 > **Ülesande eesmärk:** Loo operatiivne töölaua vaade Liis'ile, mis annab 30 sekundiga ülevaate laoseisude tervisest, müügi jaotusest ja hoiatab kriitiliste üle- või puudujääkide eest.
@@ -14,53 +13,32 @@ Markdown
 
 ---
 
-## 🛠️ Teostus, SQL Päringud ja DAX Mõõdikud
+## 🛠️ Teostus ja DAX Mõõdikud:
+* **Müügikoht (Asukoha andmete puhastamine Online-kanali jaoks)
 
-### 1. SQL Päringud
-
-#### Müük kaupluste lõikes
-```sql
-SELECT 
-    store_location, 
-    SUM(total_price) AS tulu, 
-    COUNT(*) AS tehinguid 
-FROM sales 
-GROUP BY store_location 
-ORDER BY tulu DESC;
-Laoseisude jaotus kategooria ja asukoha kaupa
-SQL
-SELECT 
-    p.category, 
-    i.location,
-    SUM(i.quantity_available) AS kogus
-FROM inventory i 
-JOIN products p ON i.product_id = p.product_id 
-WHERE i.quantity_available > 0 -- Puhastame negatiivsed ja aegunud kirjed
-GROUP BY p.category, i.location 
-ORDER BY kogus DESC;
-2. Minu Loodud DAX Mõõdikud ja Arvutusväljad
-Müügikoht (Asukoha andmete puhastamine Online-kanali jaoks)
-Koodilõik
-Müügikoht = 
+*Müügikoht = 
 IF(
     ISBLANK('public sales'[store_location]) || 'public sales'[store_location] = "", 
     "Online", 
     'public sales'[store_location]
 )
-Lao Ostuväärtus (KPI)
-Koodilõik
-Lao Ostuväärtus = 
+
+* **Lao Ostuväärtus (KPI)
+
+*Lao Ostuväärtus = 
 SUMX(
     'public products',
     'public products'[cost_price] * CALCULATE(SUM('public inventory'[quantity_available]))
 )
-Lao Müügiväärtus (KPI)
-Koodilõik
-Lao Müügiväärtus = 
+
+* **Lao Müügiväärtus (KPI)
+* Lao Müügiväärtus = 
 SUMX(
     'public inventory', 
     'public inventory'[quantity_available] * RELATED('public products'[retail_price])
+
 )
+
 📊 Dashboardi Arhitektuur ja Disainipõhimõtted
 1. KPI Peamõõdikud (Ülemine riba)
 Kogus laos kokku: 377K ühikut (Sum of quantity_available)
