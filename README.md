@@ -37,10 +37,10 @@
 |:white_check_mark: Nädal 1 | Helen | Kalju | Natalia | Olga |
 |:white_check_mark: Nädal 2 | Olga | Helen | Kalju | Natalia |
 |:white_check_mark: Nädal 3 | Natalia | Olga | Helen | Kalju |
-|:arrows_counterclockwise: Nädal 4 | Kalju | Natalia | Olga | Helen |
-| Nädal 5 | Helen | Kalju | Natalia | Olga |
-| Nädal 6 | Olga | Helen | Kalju | Natalia |
-| Nädal 7 | Natalia | Olga | Helen | Kalju |
+|:white_check_mark: Nädal 4 | Kalju | Natalia | Olga | Helen |
+|:white_check_mark: Nädal 5 | Helen | Kalju | Natalia | Olga |
+|:white_check_mark: Nädal 6 | Olga | Helen | Kalju | Natalia |
+|:arrows_counterclockwise: Nädal 7 | Natalia | Olga | Helen | Kalju |
 | Nädal 8 | Kalju | Natalia | Olga | Helen |
 | Nädal 9 | Helen | Kalju | Natalia | Olga |
 | Nädal 10 | Olga | Helen | Kalju | Natalia |
