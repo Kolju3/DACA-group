@@ -28,6 +28,3 @@ Notebook sisaldab juhendipärast Roll C baas- ja edasijõudnute
 töövoogu.
 
 Roll C sisendiks on Roll B ettevalmistatud pandas DataFrame `df`.
-Seetõttu kinnitatakse lõplikud veerunimed, viitekuupäev ja tulemused
-pärast Roll A ja Roll B töö valmimist ning grupi ühisesse notebook’i
-lisamist.
