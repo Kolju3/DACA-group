@@ -1,6 +1,6 @@
 # Nädal 7 – olga individuaalne töö
 
-ROLL: Data Cleaning (Andmete puhastamine)
+ROLL B: Data Cleaning (Andmete puhastamine)
 
 ÜLESANNE:
 Puhasta Roll A poolt laetud DataFrame: eemalda duplikaadid,
