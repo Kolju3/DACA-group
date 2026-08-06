@@ -40,7 +40,7 @@ VIP- ja Loyal-segmendid moodustavad kokku 44,65% klientidest ning 72,57% analü�
 
 Esimene tegevusprioriteet on hoida VIP-kliente ja kasvatada Loyal- ning Potential-segmentide lojaalsust. At Risk klientide puhul tasub üldise kampaania asemel eelistada kõrgema rahalise väärtusega kliente.
 
-Tulemused on esialgsed, kuni meeskond kinnitab RFM-viitekuupäeva käsitluse. Andmestikus on oste pärast notebook'is kasutatud kuupäeva `2025-02-28`, mistõttu 25 kliendil on negatiivne Recency.
+RFM-viitekuupäev `2025-02-28` on Week 7 juhendis ette antud ning seda kasutati juhendile vastavuse tagamiseks. Kuna andmestikus on ka sellest hilisemaid müügikuupäevi, tekib 25 kliendil negatiivne Recency. See ei ole Roll C koodiviga, vaid juhendis määratud viitekuupäeva ja andmestiku kuupäevavahemiku vastuolu, mis tuleb lõpptulemuse juures piiranguna dokumenteerida.
 
 ## Kasutatud oskused ja tööriistad
 
