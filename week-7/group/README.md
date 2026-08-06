@@ -1,10 +1,14 @@
-# UrbanStyle RFM kliendisegmenteerimine Pythoniga
+# Nädal 7 — UrbanStyle RFM-kliendisegmenteerimine Pythoniga
 
 ## Eesmärk
 
-Koostada UrbanStyle'i müügi- ja kliendiandmetest RFM-segmendid, mille põhjal saab tootejuht Marko Saar kavandada erinevatele kliendirühmadele sobivaid tegevusi ja kampaaniaid.
+Koostada UrbanStyle'i müügi- ja kliendiandmetest kliendipõhine RFM-analüüs, mis aitab eristada väärtuslikke, lojaalseid, kasvupotentsiaaliga ja lahkumisriskiga kliente ning toetab tootejuht Marko Saare kampaaniaotsuseid.
 
-RFM-meetodis mõõdab **Recency** viimase ostu värskust, **Frequency** ostude sagedust ja **Monetary** kliendi kogukulutust.
+RFM-meetodis mõõdab:
+
+- **Recency** viimase ostu värskust;
+- **Frequency** ostude sagedust;
+- **Monetary** kliendi kogukulutust.
 
 ## Meeskonna rollid
 
@@ -13,45 +17,75 @@ RFM-meetodis mõõdab **Recency** viimase ostu värskust, **Frequency** ostude s
 - **Roll C — RFM-analüüs:** Helen
 - **Roll D — visualiseerimine ja äritõlgendus:** Kalju
 
-## Töö seis
+## Töövoog
 
-Rollid A–C on koondnotebook'is rakendatud ning RFM-tulemused on eksporditud CSV-faili. Roll D visualiseeringud ja lõplik äritõlgendus on veel koostamisel.
+1. Supabase'ist laaditi `sales` ja `customers` tabelite kõik read 1000 rea kaupa.
+2. Tabelid ühendati `customer_id` alusel.
+3. Andmed puhastati RFM-arvutuseks sobivaks.
+4. Iga kliendi kohta arvutati Recency, Frequency ja Monetary väärtused.
+5. Kliendid jaotati RFM-skoori põhjal viide põhisegmenti.
+6. RFM-tulemused eksporditi CSV-faili Roll D visualiseerimise sisendiks.
 
-Andmed laaditi Supabase'ist lehekülgede kaupa, et vältida ühe päringu 1000 rea piirangut:
+## Andmemahud
 
-- `sales`: 10 118 rida;
-- `customers`: 3 150 rida;
-- pärast ühendamist: 10 118 rida ja 20 veergu;
-- pärast puhastamist: 8 950 rida ja 2 540 unikaalset klienti.
+- `sales`: **10 118 rida**
+- `customers`: **3 150 rida**
+- ühendatud andmestik: **10 118 rida ja 20 veergu**
+- pärast puhastamist: **8 950 rida**
+- RFM-tabel: **2 540 klienti**
 
-## Peamised esialgsed tulemused
+## Peamised tulemused
 
-Praeguse `rfm_segments.csv` põhjal:
+| Segment | Kliente | Klientide osakaal | Kogukulutuse osakaal |
+|---|---:|---:|---:|
+| VIP Champions | 455 | 17,91% | 42,82% |
+| Loyal | 679 | 26,73% | 29,75% |
+| Potential | 759 | 29,88% | 19,49% |
+| At Risk | 529 | 20,83% | 7,18% |
+| Lost | 118 | 4,65% | 0,76% |
 
-- **VIP Champions:** 455 klienti ehk 17,91% klientidest; 42,82% analüüsitud kogukulutusest;
-- **Loyal:** 679 klienti ehk 26,73%; 29,75% kogukulutusest;
-- **Potential:** 759 klienti ehk 29,88%; suurim kliendirühm;
-- **At Risk:** 529 klienti ehk 20,83%, kuid ainult 7,18% kogukulutusest;
-- **Lost:** 118 klienti ehk 4,65% ja 0,76% kogukulutusest.
-
-VIP- ja Loyal-segmendid moodustavad kokku 44,65% klientidest ning 72,57% analüüsitud kogukulutusest.
+VIP- ja Loyal-segmendid moodustavad kokku **44,65% klientidest**, kuid **72,57% analüüsitud kogukulutusest**.
 
 ## Järeldus
 
-Esimene tegevusprioriteet on hoida VIP-kliente ja kasvatada Loyal- ning Potential-segmentide lojaalsust. At Risk klientide puhul tasub üldise kampaania asemel eelistada kõrgema rahalise väärtusega kliente.
+Kõige olulisem tegevusprioriteet on hoida VIP-kliente ning kasvatada Loyal- ja Potential-segmentide lojaalsust. At Risk segment on arvukas, kuid väiksema rahalise osakaaluga, mistõttu tasub tagasivõitmise tegevused suunata eelkõige kõrgema `monetary_value` väärtusega klientidele.
 
-RFM-viitekuupäev `2025-02-28` on Week 7 juhendis ette antud ning seda kasutati juhendile vastavuse tagamiseks. Kuna andmestikus on ka sellest hilisemaid müügikuupäevi, tekib 25 kliendil negatiivne Recency. See ei ole Roll C koodiviga, vaid juhendis määratud viitekuupäeva ja andmestiku kuupäevavahemiku vastuolu, mis tuleb lõpptulemuse juures piiranguna dokumenteerida.
+## Piirang
+
+RFM-viitekuupäev `2025-02-28` on Week 7 juhendis ette antud ja seda kasutati juhendile vastavuse tagamiseks. Kuna andmestik sisaldab ka sellest hilisemaid müügikuupäevi, on 25 kliendil negatiivne Recency.
+
+See ei ole Roll C koodiviga, vaid juhendis määratud viitekuupäeva ja andmestiku kuupäevavahemiku vastuolu. Piirang tuleb lõppvisualiseeringus selgelt välja tuua; viitekuupäeva muutmine oleks eraldi alternatiivne analüüs.
+
+## Töö seis
+
+Rollid A–C on koondnotebook'is rakendatud ja RFM-tulemused on CSV-failina olemas. Roll D visualiseeringud ja lõplik äritõlgendus on veel koostamisel.
 
 ## Kasutatud oskused ja tööriistad
 
-Python, pandas, Jupyter Notebook, Supabase, RFM-segmenteerimine, `groupby`, `merge`, `qcut`, andmekvaliteedi kontroll ja CSV-eksport.
+- Python ja pandas
+- Jupyter Notebook
+- Supabase
+- `.env` ja `python-dotenv`
+- `groupby`, `merge`, `pd.qcut`, `apply` ja `value_counts`
+- andmete puhastamine ja valideerimine
+- RFM-kliendisegmenteerimine
+- CSV-eksport
+- Git ja GitHub
 
 ## AI kasutamine
 
-AI-d kasutati õppematerjalide tõlgendamisel, koodi ja kontrollide ülevaatamisel ning dokumentatsiooni koostamisel. Tulemused kontrolliti notebook'i väljundite ja CSV-faili põhjal.
+AI-d kasutati õppematerjalide tõlgendamisel, pandas- ja Supabase'i koodi kontrollimisel, vigade analüüsimisel ning dokumentatsiooni vormistamisel. Lõplikud arvud kontrolliti notebook'i väljundite ja `rfm_segments.csv` faili põhjal.
 
-## Artefaktid
+## Grupi artefaktid
 
 - [Koondnotebook](urbanstyle_operatsioonid_week7_(a_b_c_d).ipynb)
 - [RFM-segmendid CSV-failina](rfm_segments.csv)
+
+## Individuaalsed väljundid
+
+- [Natalia — Roll A](../individual/natalia/)
+- [Olga — Roll B](../individual/olga/)
+- [Helen — Roll C](../individual/helen/)
+- [Kalju — Roll D](../individual/helen/)
+
 
