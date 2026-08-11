@@ -83,15 +83,15 @@ DACA-group/
 |-------|-------|-----------|---------|
 | Nädal 0 | Töökeskkonna seadistamine | [group →](./week-0/group/) | :white_check_mark: Valmis |
 | Nädal 1 | SQL põhitõed – sales tabeli uurimine | [group →](./week-1/group/) | :white_check_mark: Valmis |
-| Nädal 2 | Andmete puhastamine | [group →](./week-2/group/) | :white_check_mark: Valmis   |
+| Nädal 2 | SQL Andmete puhastamine | [group →](./week-2/group/) | :white_check_mark: Valmis   |
 | Nädal 3 | SQL JOIN-id | [group →](./week-3/group/) |  :white_check_mark: Valmis  |
-| Nädal 4 | GROUP BY ja agregatsioonid | [group →](./week-4/group/) |  :white_check_mark: Valmis   |
-| Nädal 5 | Klientide segmenteerimine | [group →](./week-5/group/) |  :white_check_mark: Valmis  |
-| Nädal 6 | Visualiseerimine | [group →](./week-6/group/) |  :white_check_mark: Valmis  |
-| Nädal 7 | Varud ja operatsioonid | [group →](./week-7/group/) | :arrows_counterclockwise: Töös  |
-| Nädal 8 | Python ja pandas | [group →](./week-8/group/) |  :hourglass: Tulevikus |
-| Nädal 9 | Dashboardid | [group →](./week-9/group/) |  :hourglass: Tulevikus |
-| Nädal 10 | Lõpuprojekt | [group →](./week-10/group/) |  :hourglass: Tulevikus |
+| Nädal 4 | SQL GROUP BY ja agregatsioonid | [group →](./week-4/group/) |  :white_check_mark: Valmis   |
+| Nädal 5 | Power BI ja Streamlit dashboard'id - Andmete visualiseerimine | [group →](./week-5/group/) |  :white_check_mark: Valmis  |
+| Nädal 6 | Power BI ja Streamlit dashboard'id - Andmete visualiseerimine  | [group →](./week-6/group/) |  :white_check_mark: Valmis  |
+| Nädal 7 | Python - Pandas programmeerimise alused andmeanalüüsi kontekstis | [group →](./week-7/group/) | :arrows_counterclockwise: Töös  |
+| Nädal 8 | Andmebaasi haldamine ja API integratsioon | [group →](./week-8/group/) |  :hourglass: Tulevikus |
+| Nädal 9 | Karjääriplaneerimine: portfoolio, CV, LinkedIn, intervjuuks valmistumine | [group →](./week-9/group/) |  :hourglass: Tulevikus |
+| Nädal 10 | Lõpuprojekt: tervikliku analüüsiprojekti läbiviimine ja kaitsmine | [group →](./week-10/group/) |  :hourglass: Tulevikus |
 
 ---
 
