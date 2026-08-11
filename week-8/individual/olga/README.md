@@ -16,4 +16,4 @@ SISEND: Roll B töödeldud DataFrame'id (koondandmed, KPI-d)
 VÄLJUND: visualize_export.py — diagrammifunktsioonid + eksport
 
 ## SQL päringud / failid
-<img width="3840" height="1200" alt="image" src="https://github.com/user-attachments/assets/3f1f3393-1872-4b65-870d-7b750ee7144b" />
+<img width="1912" height="1155" alt="WEEK8ROLLCTEST" src="https://github.com/user-attachments/assets/aef4ffa2-a10c-4fa0-8b76-31d3dd3eca7e" />
