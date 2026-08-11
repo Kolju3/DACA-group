@@ -16,11 +16,47 @@ def create_weekly_chart(df_weekly):
 
 
 def create_kpi_summary(kpis):
-    fig = px.bar(
-        x=list(kpis.keys()),
-        y=list(kpis.values()),
-        title="Peamised KPI-d"
+    from plotly.subplots import make_subplots
+    import plotly.graph_objects as go
+
+    fig = make_subplots(
+        rows=1,
+        cols=3,
+        specs=[[{"type": "indicator"}, {"type": "indicator"}, {"type": "indicator"}]]
     )
+
+    fig.add_trace(
+        go.Indicator(
+            mode="number",
+            value=kpis["total_revenue"],
+            title={"text": "Total Revenue"}
+        ),
+        row=1,
+        col=1
+    )
+
+    fig.add_trace(
+        go.Indicator(
+            mode="number",
+            value=kpis["unique_customers"],
+            title={"text": "Unique Customers"}
+        ),
+        row=1,
+        col=2
+    )
+
+    fig.add_trace(
+        go.Indicator(
+            mode="number",
+            value=kpis["avg_order_value"],
+            title={"text": "Average Order Value"}
+        ),
+        row=1,
+        col=3
+    )
+
+    fig.update_layout(title="Peamised KPI-d")
+
     return fig
 
 
