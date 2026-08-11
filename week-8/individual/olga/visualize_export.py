@@ -39,7 +39,8 @@ def export_results(df, output_dir):
     return csv_path
 
 if __name__ == "__main__":
-        os.makedirs("output", exist_ok=True)
+    os.makedirs("output", exist_ok=True)
+
     test_data = pd.DataFrame({
         "week": ["2026-08-03", "2026-08-10", "2026-08-17"],
         "revenue": [1200, 1800, 1500]
