@@ -1,4 +1,5 @@
-#Roll B - Data proccessing
+#Roll B - Data proccesing
+
 import pandas as pd
 import logging
 
@@ -9,20 +10,25 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     Puhastab müügi- ja kliendiandmed:
     - Eemaldab duplikaadid
     - Muudab sale_date kuupäevavormingusse (datetime)
-    - Täidab puuduvad numbrilised väärtused
+    - Eemaldab read, kus puuduvad kriitilised väljad (customer_id, sale_date, total_price)
+    - Eemaldab null- ja negatiivse müügisummaga read (total_price > 0)
     """
     try:
         df_clean = df.drop_duplicates().copy()
         
-        # Teisendame müügikuupäeva datetime formaati
+        # 1. Teisendame müügikuupäeva datetime formaati
         if 'sale_date' in df_clean.columns:
             df_clean['sale_date'] = pd.to_datetime(df_clean['sale_date'], errors='coerce')
         
-        # Puuduvad summad täidame nulliga
-        if 'total_amount' in df_clean.columns:
-            df_clean['total_amount'] = df_clean['total_amount'].fillna(0)
+        # 2. Eemaldame read, kus puuduvad analüüsiks vajalikud andmed
+        required_cols = [col for col in ['customer_id', 'sale_date', 'total_price'] if col in df_clean.columns]
+        df_clean = df_clean.dropna(subset=required_cols)
+        
+        # 3. Välistame null- ja negatiivsed müügisummad (total_price > 0)
+        if 'total_price' in df_clean.columns:
+            df_clean = df_clean[df_clean['total_price'] > 0]
 
-        logging.info("Cleaned data successfully.")
+        logging.info(f"Cleaned data successfully: {len(df_clean)} rows remaining.")
         return df_clean
     except Exception as e:
         logging.error(f"Error in clean_data: {e}")
@@ -47,7 +53,7 @@ def merge_datasets(df_sales: pd.DataFrame, df_customers: pd.DataFrame) -> pd.Dat
 def calculate_weekly_aggregates(df: pd.DataFrame) -> pd.DataFrame:
     """
     Grupeerib puhastatud andmed nädalate kaupa (sale_date alusel) 
-    ja arvutab nädalase tulu ning tellimuste arvu.
+    ja arvutab nädalase tulu, tellimuste arvu (sale_id alusel) ja keskmise ostusumma.
     """
     try:
         df_clean = df.copy()
@@ -55,10 +61,13 @@ def calculate_weekly_aggregates(df: pd.DataFrame) -> pd.DataFrame:
         # Luuakse nädala alguse kuupäevaga veerg 'week'
         df_clean['week'] = df_clean['sale_date'].dt.to_period('W').dt.start_time
         
+        # Kasutame tellimuste loendamiseks 'sale_id' (kui olemas) või varuvariandina 'id'
+        order_col = 'sale_id' if 'sale_id' in df_clean.columns else ('id' if 'id' in df_clean.columns else 'total_price')
+        
         weekly = df_clean.groupby('week').agg(
-            revenue=('total_amount', 'sum'),
-            orders=('id', 'count'),
-            avg_order_value=('total_amount', 'mean')
+            revenue=('total_price', 'sum'),
+            orders=(order_col, 'count'),
+            avg_order_value=('total_price', 'mean')
         ).reset_index()
 
         logging.info("Calculated weekly aggregates.")
@@ -75,9 +84,9 @@ def calculate_kpis(df: pd.DataFrame) -> dict:
     - Keskmine ostusumma (avg_order_value)
     """
     try:
-        total_revenue = float(df['total_amount'].sum()) if 'total_amount' in df.columns else 0.0
+        total_revenue = float(df['total_price'].sum()) if 'total_price' in df.columns else 0.0
         unique_cust = int(df['customer_id'].nunique()) if 'customer_id' in df.columns else 0
-        avg_order = float(df['total_amount'].mean()) if 'total_amount' in df.columns else 0.0
+        avg_order = float(df['total_price'].mean()) if 'total_price' in df.columns else 0.0
 
         kpis = {
             "total_revenue": round(total_revenue, 2),
@@ -89,4 +98,3 @@ def calculate_kpis(df: pd.DataFrame) -> dict:
     except Exception as e:
         logging.error(f"Error in calculate_kpis: {e}")
         raise
-    
