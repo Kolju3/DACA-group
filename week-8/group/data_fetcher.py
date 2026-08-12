@@ -17,9 +17,9 @@ def fetch_sales(start_date=None, end_date=None):
     try:
         query = supabase.table("sales").select("*")
         if start_date:
-            query = query.gte("date", start_date)      # adjust column name
+            query = query.gte("sale_date", start_date)      # adjust column name   HELEN MUUTIIS "date" to "sale_date" to match the actual column name in the database
         if end_date:
-            query = query.lte("date", end_date)
+            query = query.lt("sale_date", end_date)        # HELEN MUUTIIS "date" to "sale_date" and changed lte to lt to ensure we get sales before the end_date, not including it
 
         all_data = []
         offset = 0
