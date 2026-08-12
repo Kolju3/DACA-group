@@ -1,6 +1,7 @@
 # Pythoni standardteegid: logging jälgib programmi tööd, time mõõdab pipeline'i kestust
 import logging
 import time
+import sys
 
 # Roll A: funktsioonid müügi- ja kliendiandmete laadimiseks
 from data_fetcher import fetch_sales, fetch_customers
@@ -20,12 +21,12 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Käivitab kogu pipeline'i etapid õiges järjekorras
-def run_pipeline():
+def run_pipeline(date=None):
     try:
         logger.info("Pipeline started")
  # EXTRACT: Roll A funktsioonid toovad müügi- ja kliendiandmed
         logger.info("Fetching data...")
-        sales_df = fetch_sales()
+        sales_df = fetch_sales(end_date=date)
         customers_df = fetch_customers()
         # Kontroll: mitu rida mõlemast tabelist saime
         logger.info(f"Sales rows: {len(sales_df)}, customer rows: {len(customers_df)}")
@@ -73,6 +74,10 @@ def run_pipeline():
 # Käivitab pipeline'i otse ja mõõdab kogu töö kestust
 if __name__ == "__main__":
     start_time = time.time()
-    run_pipeline()
+
+    date = sys.argv[2] if len(sys.argv) > 2 and sys.argv[1] == "--date" else None
+
+    run_pipeline(date)
+
     elapsed_time = time.time() - start_time
     logger.info(f"Total pipeline time: {elapsed_time:.2f} seconds")
