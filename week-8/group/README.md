@@ -39,6 +39,16 @@ python pipeline.py --date 2025-03-01
 
 `--date 2025-03-01` tähendab kasutatud loogikas müüke enne 01.03.2025 ehk kuni 28.02.2025.
 
+# Väljundid
+
+### Nädalane tulu
+
+![Nädalane tulu](output/weekly_revenue.png)
+
+### KPI kokkuvõte
+
+![KPI kokkuvõte](output/kpi_summary.png)
+
 ## Failid
 
 ```text
