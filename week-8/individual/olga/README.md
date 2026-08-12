@@ -1,4 +1,4 @@
-<img width="854" height="527" alt="WEEK8ROLLCNÄIDE" src="https://github.com/user-attachments/assets/4394e091-f181-4435-994a-805b4b558f3e" />
+
 <img width="1651" height="1089" alt="WEEK8ROLLCKOOSBANDMETEGA" src="https://github.com/user-attachments/assets/b507a8e0-703f-479f-8fd5-b8d5beaff5c9" />
 # Nädal 8 – olga individuaalne töö
 
