@@ -15,16 +15,22 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 def fetch_sales(start_date=None, end_date=None):
     try:
-        query = supabase.table("sales").select("*")
-        if start_date:
-            query = query.gte("sale_date", start_date)      # adjust column name   HELEN MUUTIIS "date" to "sale_date" to match the actual column name in the database
-        if end_date:
-            query = query.lt("sale_date", end_date)        # HELEN MUUTIIS "date" to "sale_date" and changed lte to lt to ensure we get sales before the end_date, not including it
-
         all_data = []
         offset = 0
         limit = 1000
+
         while True:
+            # MUUDETUD: query luuakse iga pagination'i lehe jaoks uuesti
+            query = supabase.table("sales").select("*").order("id")    # lisatud order by id, et tagada järjepidev andmete järjekord
+
+            if start_date:
+                # MUUDETUD: date -> sale_date
+                query = query.gte("sale_date", start_date)
+
+            if end_date:
+                # MUUDETUD: date -> sale_date ja lte -> lt
+                query = query.lt("sale_date", end_date)
+
             response = query.limit(limit).offset(offset).execute()
             data = response.data
             if not data:
