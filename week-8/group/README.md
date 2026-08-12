@@ -82,7 +82,3 @@ CSV fallback'i toimimist kontrolliti eraldi ning pipeline jõudis lokaalse andme
 ## AI kasutamine
 
 AI-d kasutati eelkõige veaotsingu, pagination'i kontrollimise ja integratsioonitestide toetamiseks. Kõik olulised parandused ja lõpptulemused kontrolliti reaalse pipeline'i käivituse, ridade arvu, võtmete unikaalsuse ja KPI-de võrdlemisega.
-
-AI kasutamine
-
-AI-d kasutati eelkõige veaotsingu, pagination'i kontrollimise ja integratsioonitestide toetamiseks. Kõik olulised parandused ja lõpptulemused kontrolliti reaalse pipeline'i käivituse, ridade arvu, võtmete unikaalsuse ja KPI-de võrdlemisega.
