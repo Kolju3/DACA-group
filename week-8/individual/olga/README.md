@@ -1,10 +1,19 @@
 # Nädal 8 – olga individuaalne töö
 
 ## Ülesanne
-_Täienda ise_
+ROLL: C Visualization + Saving (Visualiseerimine ja salvestamine)
+
+ÜLESANNE:
+Loo Plotly diagrammid töödeldud andmetest ja ekspordi tulemused
+failidesse (CSV + HTML). Marko tahab visuaalset ülevaadet, mida
+saab jagada kogu meeskonnaga.
 
 ## Mida tegin
-- _Lisa siia_
+Tehtud test ilma B rolli andmeid, neid veel minul pole. 
+Kontroll, töötab.
+
+SISEND: Roll B töödeldud DataFrame'id (koondandmed, KPI-d)
+VÄLJUND: visualize_export.py — diagrammifunktsioonid + eksport
 
 ## SQL päringud / failid
-_Lisa lingid_
+<img width="1912" height="1155" alt="WEEK8ROLLCTEST" src="https://github.com/user-attachments/assets/aef4ffa2-a10c-4fa0-8b76-31d3dd3eca7e" />
