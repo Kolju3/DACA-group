@@ -49,6 +49,16 @@ python pipeline.py --date 2025-03-01
 
 ![KPI kokkuvõte](output/kpi_summary.png)
 
+### Pipeline'i käivituse valideerimine
+
+Pipeline'i tervikvoog valideeriti kuupäevafiltriga:
+
+`python pipeline.py --date 2025-03-01`
+
+Käivitus kinnitas, et andmete pärimine, ühendamine, puhastamine, nädalaste koondite ja KPI-de arvutamine ning väljundite loomine toimivad ühe tervikliku töövoona.
+
+![Pipeline execution validation](output/pipeline_execution_validation.png)
+
 ## Failid
 
 ```text
@@ -62,9 +72,12 @@ week-8/group/
 │   ├── customers.csv
 │   └── products.csv
 ├── output/
+│   ├── kpi_summary.html
+│   ├── kpi_summary.png
+│   ├── pipeline_execution_validation.png
 │   ├── results_20260812.csv
 │   ├── weekly_revenue.html
-│   └── kpi_summary.html
+│   └── weekly_revenue.png
 ├── .gitignore
 └── README.md
 ```
