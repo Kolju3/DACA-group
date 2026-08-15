@@ -1,28 +1,32 @@
 # Nädal 9 – olga individuaalne töö
 
 ## Ülesanne
-Roll A: Palkamisjuht (HR / Hiring Manager)
-Ülesanne: Koostada osa värbamisjuhendist, mis kirjeldab, mida palkamisjuht otsib DA kandidaadi CV-s ja LinkedIn-profiilis. See on üldine juhend tööandjale, mitte konkreetse inimese hindamine.
 
-## Mida tegin
-Roll A: Palkamisjuhi kriteeriumid DA kandidaadi CV ja LinkedIn hindamiseks
+Roll D: Tiimijuht (Team Lead)
+Ülesanne: Koostada osa värbamisjuhendist, mis kirjeldab, mida tiimijuht otsib DA kandidaadi juures koostöövõime, kommunikatsiooni ja iseseisvuse osas. See on üldine juhend tööandjale, mitte konkreetse inimese hindamine.
 
-1. Esmane ülevaade (30 sekundit):
+1. Iseseisvus
+Hea kandidaat oskab ise probleeme lahendada: otsida infot, katsetada lahendusi ja küsida õigel hetkel. Portfoolios ja koodis väljendub see läbi läbimõeldud lahenduste ja selgete README-de.
 
-· Andmekogemus: viimase 1–2 aasta jooksul töö SQL, Python või BI-vahenditega.
-· Tulemuslikkus: mõõdetavad tulemused (arvud, protsendid, majanduslik mõju).
-· Oskuste vastavus: kandidaadi oskuste nimekiri vastab UrbanStyle'i vajadustele.
+2. Kommunikatsioon
+Kandidaat suudab oma tööd selgelt ja lühidalt selgitada – nii tiimikaaslastele kui ka mitte-tehnilistele osapooltele. See väljendub projektide kirjeldustes ja esitlustes.
 
-2. Rohelised lipud (kutse intervjuule):
+3. Koostöö
+Panus meeskonnatöösse on nähtav: kandidaat jagab ideid, toetab kaaslasi ja reageerib tagasisidele. Meeskonnatöös osalemine ja GitHubi commitid annavad sellest hea ülevaate.
 
-· Tulemused on esitatud konkreetsete arvudena (nt aruandlusaja lühendamine 20% võrra).
-· LinkedIn on aktiivne: projektide jagamine, analüüsid, viited GitHubi portfooliole.
-· Valdab SQL-i, Pythonit või Power BI-d.
+4. Arengupotentsiaal
+Hinnatakse valmisolekut õppida, katsetada uusi asju ja areneda. See väljendub järjepidevas koodis, küsimiste esitamises ja erinevate tööriistade kasutamises.
 
-3. Punased lipud (edasi liikumine):
+5. Rohelised lipud
 
-· CV sisaldab kirjavigu või grammatikavigu (viitab vähesele tähelepanule detailidele).
-· Oskuste nimekiri on üldine: Word, Excel – puuduvad SQL ja analüüsitööriistad.
+· Lahendab iseseisvalt ja annab tulemusi.
+· Selgitab oma mõtet selgelt ja arusaadavalt.
+· Töötab hästi meeskonnas ja toetab teisi.
 
-4. Soovitus:
-Kui kandidaat vastab vähemalt kahele rohelisele lipule ja puuduvad punased lipud → kutsuda vestlusele.
+6. Punased lipud
+
+· Ootab pidevalt juhiseid, ei võta ise vastutust.
+· Kommunikatsioon on ebaselge või puudulik.
+· Ei oska tagasisidet vastu võtta ega rakendada.
+
+Soovitus: Kandidaat, kellel on vähemalt 2 rohelist lippu ja 0 punast, on tugev meeskonnaliige, keda tasub kaaluda.
