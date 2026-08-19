@@ -31,7 +31,7 @@ Hinnatakse valmisolekut õppida, katsetada uusi asju ja areneda. See väljendub 
 
 Soovitus: Kandidaat, kellel on vähemalt 2 rohelist lippu ja 0 punast, on tugev meeskonnaliige, keda tasub kaaluda.
 
-Täindus: CV screening juhend: punased lipud, rohelised lipud, mida ignoreerida. 
+Täiendus: CV screening juhend: punased lipud, rohelised lipud, mida ignoreerida. 
 
 Mida CV-s ignoreerida (tiimijuhile)
 
