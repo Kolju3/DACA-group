@@ -11,7 +11,7 @@
 
 | Nimi | OS | Nädal 0 roll | GitHub |
 |------|----|--------------|--------|
-| Kalju Tamm | Linux | Roll A – GitHub Repo Seadistaja | [@Kolju3](https://github.com/Kolju3) |
+| Kalju Tamme | Linux | Roll A – GitHub Repo Seadistaja | [@Kolju3](https://github.com/Kolju3) |
 | Natalia Krassilnikova | Mac | Roll B – Supabase Seadistaja | [@Nata376](https://github.com/Nata376) |
 | Olga Leisbblous | Windows | Roll C – NotebookLM Seadistaja |[@oleisbblous](https://github.com/oleisbblous)|
 | Helen Tanner | Windows | Roll D – Team Charter Koostaja | [@HelenTanner3](https://github.com/HelenTanner3) |
