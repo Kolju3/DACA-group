@@ -42,8 +42,8 @@
 |:white_check_mark: Nädal 6 | Olga | Helen | Kalju | Natalia |
 |:white_check_mark: Nädal 7 | Natalia | Olga | Helen | Kalju |
 |:white_check_mark: Nädal 8 | Kalju | Natalia | Olga | Helen |
-|:arrows_counterclockwise: Nädal 9 | Helen | Kalju | Natalia | Olga |
-| Nädal 10 | Olga | Helen | Kalju | Natalia |
+|:white_check_mark: Nädal 9 | Helen | Kalju | Natalia | Olga |
+|:white_check_mark: Nädal 10 | Olga | Helen | Kalju | Natalia |
 
 ---
 
@@ -90,8 +90,8 @@ DACA-group/
 | Nädal 6 | Power BI ja Streamlit dashboard'id - Andmete visualiseerimine  | [group →](./week-6/group/) |  :white_check_mark: Valmis  |
 | Nädal 7 | Python - Pandas programmeerimise alused andmeanalüüsi kontekstis | [group →](./week-7/group/) |  :white_check_mark: Valmis  |
 | Nädal 8 | Andmebaasi haldamine ja API integratsioon | [group →](./week-8/group/) |  :white_check_mark: Valmis  |
-| Nädal 9 | Karjääriplaneerimine: portfoolio, CV, LinkedIn, intervjuuks valmistumine | [group →](./week-9/group/) | :arrows_counterclockwise: Töös |
-| Nädal 10 | Lõpuprojekt: tervikliku analüüsiprojekti läbiviimine ja kaitsmine | [group →](./week-10/group/) |  :hourglass: Tulevikus |
+| Nädal 9 | Karjääriplaneerimine: portfoolio, CV, LinkedIn, intervjuuks valmistumine | [group →](./week-9/group/) |  :white_check_mark: Valmis |
+| Nädal 10 | Lõpuprojekt: tervikliku analüüsiprojekti läbiviimine ja kaitsmine | [group →](./week-10/group/) |  :white_check_mark: Valmis  |
 
 ---
 
